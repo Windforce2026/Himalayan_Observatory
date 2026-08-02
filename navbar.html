@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#02040A" />
+  <meta name="description" content="Himalayan Observatory — the command interface of a world-class observatory in the Himalayas." />
+  <title>Himalayan Observatory — Navigation</title>
+
+  <!-- Premium aerospace typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@300;400;500;600&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Fixed Himalayan night backdrop: star field, Milky Way, alpenglow,
+       layered mountain silhouettes and an observatory dome on the peak -->
+  <div class="site-space" aria-hidden="true">
+    <div class="site-space__stars"></div>
+    <div class="site-space__milkyway"></div>
+    <div class="site-space__twinkle"></div>
+    <div class="site-space__alpenglow"></div>
+
+    <!-- Satellite crossing the night sky -->
+    <div class="site-space__sat" aria-hidden="true">
+      <svg viewBox="0 0 140 84" fill="none">
+        <defs>
+          <linearGradient id="satPanel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2b6bd6"/>
+            <stop offset="0.55" stop-color="#123c8a"/>
+            <stop offset="1" stop-color="#081c46"/>
+          </linearGradient>
+          <linearGradient id="satBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e4edff"/>
+            <stop offset="0.5" stop-color="#93a7c4"/>
+            <stop offset="1" stop-color="#33435f"/>
+          </linearGradient>
+          <linearGradient id="satTrail" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/>
+            <stop offset="0.7" stop-color="#7ad7ff" stop-opacity="0.16"/>
+            <stop offset="1" stop-color="#bcdcff" stop-opacity="0.6"/>
+          </linearGradient>
+        </defs>
+
+        <path d="M0 42 L56 42" stroke="url(#satTrail)" stroke-width="2"/>
+
+        <rect x="6" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
+        <rect x="82" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
+        <path d="M18 29V43M30 29V43M42 29V43M54 29V43M94 29V43M106 29V43M118 29V43M130 29V43" stroke="#9ad7ff" stroke-opacity="0.4" stroke-width="1"/>
+        <rect x="52" y="33" width="4" height="6" fill="#8fa3c0"/>
+        <rect x="84" y="33" width="4" height="6" fill="#8fa3c0"/>
+
+        <rect x="56" y="14" width="28" height="44" rx="6" fill="url(#satBody)" stroke="#cfe0ff" stroke-opacity="0.7"/>
+
+        <path d="M70 14 L70 6" stroke="#e4edff" stroke-width="2"/>
+        <circle cx="70" cy="4.5" r="3" fill="#ffd166"/>
+
+        <rect x="60" y="20" width="20" height="9" rx="2" fill="#07152e"/>
+        <circle cx="65.5" cy="24.5" r="2" fill="#00d4ff"/>
+        <circle cx="74.5" cy="24.5" r="2" fill="#ff5c5c"/>
+
+        <circle class="sat-beacon" cx="70" cy="48" r="2.2" fill="#ffd166"/>
+      </svg>
+    </div>
+
+    <div class="site-space__mountains">
+      <svg class="site-space__range site-space__range--back" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ssRangeBack" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#22365e" stop-opacity="0"/>
+            <stop offset="0.45" stop-color="#22365e" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="#22365e" stop-opacity="0.85"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 258 L130 208 L250 246 L410 186 L540 238 L680 168 L820 220 L960 186 L1100 238 L1240 172 L1380 224 L1500 200 L1600 240 L1600 400 Z" fill="url(#ssRangeBack)"/>
+      </svg>
+
+      <svg class="site-space__range site-space__range--mid" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ssRangeMid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0d1a33" stop-opacity="0"/>
+            <stop offset="0.45" stop-color="#0d1a33" stop-opacity="0.72"/>
+            <stop offset="1" stop-color="#0d1a33" stop-opacity="0.95"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 320 L180 268 L340 308 L500 250 L660 298 L820 242 L980 296 L1140 252 L1300 304 L1460 264 L1600 300 L1600 400 Z" fill="url(#ssRangeMid)"/>
+      </svg>
+
+      <svg class="site-space__range site-space__range--front" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="ssRangeFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#050b16" stop-opacity="0"/>
+            <stop offset="0.4" stop-color="#050b16" stop-opacity="0.85"/>
+            <stop offset="1" stop-color="#050b16" stop-opacity="0.98"/>
+          </linearGradient>
+          <linearGradient id="ssBeam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#7ad7ff" stop-opacity="0.4"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 372 L150 338 L300 364 L460 330 L620 366 L800 330 L862 300 L940 336 L1100 352 L1260 318 L1420 352 L1540 330 L1600 346 L1600 400 Z" fill="url(#ssRangeFront)"/>
+        <g class="site-space__dome">
+          <rect x="840" y="296" width="44" height="12" rx="2" fill="#07101f"/>
+          <path class="site-space__dome-shell" d="M842 296 A20 20 0 0 1 882 296 Z" fill="#0a1428"/>
+          <path class="site-space__dome-slit" d="M858 276 L862 276 L862 296 L858 296 Z" fill="#00d4ff" opacity="0.9"/>
+          <path class="site-space__beam" d="M854 282 L866 282 L878 148 L842 148 Z" fill="url(#ssBeam)"/>
+        </g>
+      </svg>
+
+      <div class="site-space__mist site-space__mist--1"></div>
+      <div class="site-space__mist site-space__mist--2"></div>
+    </div>
+
+    <div class="site-space__vignette"></div>
+    <div class="site-space__grain"></div>
+  </div>
+
+  <!-- ============================================================
+       TOP INFORMATION BAR (thin strip above the navigation)
+       Auto-hidden on scroll and on mobile.
+       ============================================================ -->
+  <div class="topbar" id="topbar" role="complementary" aria-label="Observatory conditions">
+    <div class="topbar__inner">
+
+      <div class="topbar__conditions">
+        <span class="topbar__item">
+          <span class="topbar__dot topbar__dot--green" aria-hidden="true"></span>
+          SKY CLEAR · BORTLE 2
+        </span>
+        <span class="topbar__item">
+          <svg class="topbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 1 6 6c0 4-2.5 6-6 9.5C8.5 15 6 13 6 9a6 6 0 0 1 6-6Z" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="9" r="2" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+          −8°C
+        </span>
+        <span class="topbar__item">
+          <svg class="topbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3a9 9 0 1 0 9 9c0-.8-.1-1.6-.3-2.3C19.8 11.6 18 12 16.5 12A7.5 7.5 0 0 1 9 4.5C9 3 9.4 1.2 10.7.3A9 9 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          MOON WAXING GIBBOUS 92%
+        </span>
+        <span class="topbar__item">
+          <svg class="topbar__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          OPEN 6 PM — 4 AM IST
+        </span>
+      </div>
+
+      <div class="topbar__social" aria-label="Follow the observatory">
+        <a href="#" class="topbar__social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" class="topbar__social-link" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22 12c0-2.6-.3-4.4-.7-5.3a2.7 2.7 0 0 0-1.7-1.7C18.6 4.6 12 4.6 12 4.6s-6.6 0-7.6.4a2.7 2.7 0 0 0-1.7 1.7C2.3 7.6 2 9.4 2 12s.3 4.4.7 5.3a2.7 2.7 0 0 0 1.7 1.7c1 .4 7.6.4 7.6.4s6.6 0 7.6-.4a2.7 2.7 0 0 0 1.7-1.7c.4-.9.7-2.7.7-5.3Z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10 9.5v5l4.5-2.5L10 9.5Z" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" class="topbar__social-link" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PRIMARY NAVIGATION
+       ============================================================ -->
+  <header class="nav" id="navbar" role="banner">
+    <div class="nav__inner">
+
+      <!-- Left : brand -->
+      <a class="brand" href="#home" aria-label="Himalayan Observatory — home">
+        <span class="brand__logo" aria-hidden="true">
+          <img src="assets/logo_himalayan.jpeg" alt="" width="1352" height="1600" />
+        </span>
+        <span class="brand__text">
+          <span class="brand__title">HIMALAYAN <em>OBSERVATORY</em></span>
+          <span class="brand__tagline">Gateway to the Universe</span>
+        </span>
+      </a>
+
+      <!-- Center : primary menu (desktop) -->
+      <nav class="menu" id="menu" aria-label="Primary">
+        <a class="menu__link is-active" href="#home" aria-current="page">Home</a>
+        <a class="menu__link" href="#about">About</a>
+        <a class="menu__link" href="#observatory">Observatory</a>
+        <a class="menu__link" href="#experiences">Experiences</a>
+        <a class="menu__link" href="#events">Events</a>
+        <a class="menu__link" href="#academy">Academy</a>
+        <a class="menu__link" href="#gallery">Gallery</a>
+        <a class="menu__link" href="#blog">Blog</a>
+        <a class="menu__link" href="#games">Games</a>
+        <a class="menu__link" href="#contact">Contact</a>
+      </nav>
+
+      <!-- Right : actions -->
+      <div class="actions">
+
+        <button class="icon-btn icon-btn--search" id="searchBtn" type="button"
+                aria-label="Open search" aria-haspopup="dialog" aria-controls="searchOverlay">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/>
+            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span class="icon-btn__ring" aria-hidden="true"></span>
+        </button>
+
+        <button class="icon-btn icon-btn--bell" id="bellBtn" type="button"
+                aria-label="Notifications" aria-haspopup="dialog" aria-controls="notifPanel"
+                aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M10 19a2.2 2.2 0 0 0 4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span class="icon-btn__badge" id="bellBadge" aria-hidden="true">3</span>
+        </button>
+
+        <a class="btn btn--outline" href="#sky">
+          <span class="btn__pulse" aria-hidden="true"></span>
+          <span class="btn__label">Live Sky</span>
+        </a>
+
+        <a class="btn btn--primary" href="#book">
+          <svg class="btn__spark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="btn__label">Book Experience</span>
+        </a>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="burger__line" aria-hidden="true"></span>
+          <span class="burger__line" aria-hidden="true"></span>
+          <span class="burger__line" aria-hidden="true"></span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       SEARCH OVERLAY (fullscreen)
+       ============================================================ -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true"
+       aria-label="Search the cosmos" aria-hidden="true">
+    <div class="search-overlay__bg" aria-hidden="true"></div>
+
+    <form class="search-overlay__box" id="searchForm" role="search">
+      <span class="search-overlay__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/>
+          <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <input class="search-overlay__input" id="searchInput" type="search"
+             placeholder="Search the cosmos…" autocomplete="off" aria-label="Search the cosmos" />
+      <button class="search-overlay__close" id="searchClose" type="button" aria-label="Close search">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <p class="search-overlay__hint" id="searchHint">Press <kbd>Esc</kbd> to close</p>
+    </form>
+
+    <div class="search-overlay__suggest" id="searchSuggest" aria-hidden="true">
+      <p class="search-overlay__label">Popular searches</p>
+      <div class="search-overlay__chips">
+        <button class="chip" type="button">Meteor Shower</button>
+        <button class="chip" type="button">Milky Way</button>
+        <button class="chip" type="button">Saturn</button>
+        <button class="chip" type="button">Telescope</button>
+        <button class="chip" type="button">Book a Night</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       NOTIFICATION PANEL
+       ============================================================ -->
+  <div class="notif" id="notifPanel" role="dialog" aria-label="Notifications"
+       aria-hidden="true">
+    <header class="notif__head">
+      <span class="notif__title">Mission Alerts</span>
+      <span class="notif__clear" id="notifClear" role="button" tabindex="0" aria-label="Clear notifications">Clear all</span>
+    </header>
+
+    <ul class="notif__list" id="notifList">
+      <li class="notif__item notif__item--new">
+        <span class="notif__icon" aria-hidden="true">☄</span>
+        <span class="notif__body">
+          <span class="notif__msg">Perseids meteor shower peaks tonight</span>
+          <span class="notif__time">Peak 2:00 AM · Live Sky</span>
+        </span>
+        <span class="notif__tag notif__tag--alert">NOW</span>
+      </li>
+      <li class="notif__item notif__item--new">
+        <span class="notif__icon" aria-hidden="true">✦</span>
+        <span class="notif__body">
+          <span class="notif__msg">Astronomy Night under the Milky Way</span>
+          <span class="notif__time">This Saturday · Book early</span>
+        </span>
+        <span class="notif__tag notif__tag--event">EVENT</span>
+      </li>
+      <li class="notif__item">
+        <span class="notif__icon" aria-hidden="true">◈</span>
+        <span class="notif__body">
+          <span class="notif__msg">New workshop: Deep Space Imaging</span>
+          <span class="notif__time">Starts next week · Academy</span>
+        </span>
+        <span class="notif__tag notif__tag--class">WORKSHOP</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ============================================================
+       MOBILE MENU OVERLAY (fullscreen)
+       ============================================================ -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true"
+       aria-label="Menu" aria-hidden="true">
+    <div class="mobile-menu__stars" aria-hidden="true"></div>
+    <div class="mobile-menu__veil" aria-hidden="true"></div>
+
+    <div class="mobile-menu__content">
+      <div class="mobile-menu__brand" aria-hidden="true">
+        <span class="mobile-menu__logo">
+          <img src="assets/logo_himalayan.jpeg" alt="" width="1352" height="1600" />
+        </span>
+        <span class="mobile-menu__name">HIMALAYAN <em>OBSERVATORY</em></span>
+      </div>
+
+      <nav class="mobile-menu__nav" id="mobileNav" aria-label="Mobile">
+        <a class="mobile-menu__link is-active" href="#home">Home</a>
+        <a class="mobile-menu__link" href="#about">About</a>
+        <a class="mobile-menu__link" href="#observatory">Observatory</a>
+        <a class="mobile-menu__link" href="#experiences">Experiences</a>
+        <a class="mobile-menu__link" href="#events">Events</a>
+        <a class="mobile-menu__link" href="#academy">Academy</a>
+        <a class="mobile-menu__link" href="#gallery">Gallery</a>
+        <a class="mobile-menu__link" href="#blog">Blog</a>
+        <a class="mobile-menu__link" href="#games">Games</a>
+        <a class="mobile-menu__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="mobile-menu__actions">
+        <a class="btn btn--primary btn--wide" href="#book">Book Now</a>
+        <a class="btn btn--outline btn--wide" href="#sky">Live Sky</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       DEMO PAGE CONTENT (so scroll behaviour is testable)
+       ============================================================ -->
+  <main class="page" id="page">
+
+    <section class="hero" id="home">
+      <p class="hero__eyebrow">THE ROOF OF THE WORLD</p>
+      <h1 class="hero__title">Above the clouds.<br /><span>Below the stars.</span></h1>
+      <p class="hero__sub">A world-class observatory perched in the Himalayas, where the sky is so dark it almost glows.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#book">Begin Your Expedition</a>
+        <a class="btn btn--outline" href="#observatory">Explore the Observatory</a>
+      </div>
+    </section>
+
+    <section class="demo" id="about"><h2>About</h2></section>
+    <section class="demo" id="observatory"><h2>Observatory</h2></section>
+    <section class="demo" id="experiences"><h2>Experiences</h2></section>
+    <section class="demo" id="events"><h2>Events</h2></section>
+    <section class="demo" id="academy"><h2>Academy</h2></section>
+    <section class="demo" id="gallery"><h2>Gallery</h2></section>
+    <section class="demo" id="blog"><h2>Blog</h2></section>
+    <section class="demo" id="games"><h2>Games</h2></section>
+    <section class="demo" id="contact"><h2>Contact</h2></section>
+
+    <footer class="demo__footer">
+      <span>28.5°N · 83.9°E · 3,650 M</span>
+      <span>Himalayan Observatory · Command Interface</span>
+    </footer>
+
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

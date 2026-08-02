@@ -1,0 +1,868 @@
+/* ==========================================================================
+   HIMALAYAN OBSERVATORY — Cinematic Launch Sequence
+   ==========================================================================
+   Sections
+   01. Design tokens & base reset
+   02. Loader screen & deep-space background
+   03. Star canvas
+   04. Vignette / grain / flash
+   05. HUD corners
+   06. Floating data panels
+   07. Center stage (rings · logo · telemetry)
+   08. Homepage reveal
+   09. Keyframe library
+   10. Responsive breakpoints
+   11. Accessibility (reduced motion · keyboard)
+   ========================================================================== */
+
+/* 01 — DESIGN TOKENS & BASE ---------------------------------------------- */
+:root {
+  --bg-deep:      #02040A;
+  --bg-secondary: #071326;
+  --accent-blue:  #00D4FF;
+  --accent-purple:#7A5CFF;
+  --white:        #FFFFFF;
+  --grey:         #A0AEC0;
+  --glow:         rgba(0, 212, 255, 0.6);
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-ui:      'Inter', sans-serif;
+  --font-mono:    'Share Tech Mono', monospace;
+
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--white);
+  background: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* 02 — LOADER SCREEN & DEEP-SPACE BACKGROUND ------------------------------ */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% 12%, #0A1730 0%, var(--bg-secondary) 42%, var(--bg-deep) 100%);
+  transition: transform 1.6s var(--ease-in-out), filter 1.6s var(--ease-in-out), opacity 1.1s ease;
+  will-change: transform, filter, opacity;
+}
+
+/* Final camera-zoom state */
+.loader.is-zooming {
+  transform: scale(6) translateZ(0);
+  filter: blur(28px) brightness(2.2);
+  opacity: 0;
+}
+
+/* Hides the whole loader after the reveal completes */
+.loader.is-gone {
+  display: none;
+}
+
+/* Nebula clouds — soft blurred radial glows */
+.deep-space {
+  position: absolute;
+  inset: -15%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  will-change: transform, opacity;
+}
+
+.nebula--blue {
+  width: 58vmax;
+  height: 58vmax;
+  left: -12%;
+  top: -18%;
+  background: radial-gradient(circle at 35% 40%, rgba(0, 212, 255, 0.28), transparent 62%);
+  animation: nebulaDrift 26s var(--ease-in-out) infinite alternate;
+}
+
+.nebula--purple {
+  width: 52vmax;
+  height: 52vmax;
+  right: -14%;
+  bottom: -16%;
+  background: radial-gradient(circle at 60% 55%, rgba(122, 92, 255, 0.3), transparent 60%);
+  animation: nebulaDrift 32s var(--ease-in-out) infinite alternate-reverse;
+}
+
+.nebula--teal {
+  width: 40vmax;
+  height: 40vmax;
+  right: 22%;
+  top: 8%;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.16), transparent 58%);
+  animation: nebulaPulse 14s var(--ease-in-out) infinite alternate;
+}
+
+/* Soft rotating light rays behind the stage */
+.rays {
+  position: absolute;
+  inset: -30%;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(0, 212, 255, 0.05) 0deg 8deg,
+      transparent 8deg 26deg,
+      rgba(122, 92, 255, 0.04) 26deg 34deg,
+      transparent 34deg 52deg
+    );
+  animation: raysSpin 90s linear infinite;
+  mask-image: radial-gradient(42% 42% at 50% 50%, #000 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(42% 42% at 50% 50%, #000 0%, transparent 72%);
+}
+
+/* 03 — STAR CANVAS --------------------------------------------------------- */
+.space-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* 04 — VIGNETTE / GRAIN / FLASH ------------------------------------------- */
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(120% 120% at 50% 50%, transparent 52%, rgba(2, 4, 10, 0.55) 82%, rgba(2, 4, 10, 0.9) 100%);
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 0.9s steps(3) infinite;
+}
+
+/* White flash used during the final jump */
+.flash {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  background: #FFFFFF;
+  opacity: 0;
+}
+
+.flash.is-lit {
+  opacity: 1;
+  transition: opacity 0.12s linear;
+}
+
+.flash.is-fading {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+/* 05 — HUD CORNERS ---------------------------------------------------------- */
+.hud {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px;
+  animation: hudIn 0.7s var(--ease-out) both;
+  user-select: none;
+}
+
+.hud--tl { top: 0; left: 0; text-align: left;  border-right: 1px solid rgba(0, 212, 255, 0.18); border-bottom: 1px solid rgba(0, 212, 255, 0.18); backdrop-filter: blur(6px); }
+.hud--tr { top: 0; right: 0; text-align: right; border-left: 1px solid rgba(0, 212, 255, 0.18);  border-bottom: 1px solid rgba(0, 212, 255, 0.18); backdrop-filter: blur(6px); }
+.hud--bl { bottom: 0; left: 0; text-align: left; border-right: 1px solid rgba(0, 212, 255, 0.18); border-top: 1px solid rgba(0, 212, 255, 0.18);    backdrop-filter: blur(6px); }
+.hud--br { bottom: 0; right: 0; text-align: right; border-left: 1px solid rgba(0, 212, 255, 0.18); border-top: 1px solid rgba(0, 212, 255, 0.18);     backdrop-filter: blur(6px); }
+
+.hud__eyebrow {
+  font-family: var(--font-display);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--grey);
+  opacity: 0.8;
+}
+
+.hud__value {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  color: var(--accent-blue);
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.hud__value--system {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pulsing status indicator */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue), 0 0 22px var(--glow);
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+
+/* Engine gauge in bottom-right HUD */
+.engine-gauge {
+  display: inline-block;
+  width: 54px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 99px;
+  background: rgba(160, 174, 192, 0.18);
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.engine-gauge__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+  box-shadow: 0 0 12px var(--glow);
+  transition: width 0.35s var(--ease-out);
+}
+
+/* 07 — CENTER STAGE -------------------------------------------------------- */
+.stage {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+}
+
+/* --- Scanner rings ------------------------------------------------------- */
+.rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(58vmin, 520px);
+  height: min(58vmin, 520px);
+  pointer-events: none;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.ring--r1 {
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  animation: ringSpin 14s linear infinite;
+}
+
+.ring--r2 {
+  inset: 9%;
+  border: 1px dashed rgba(0, 212, 255, 0.4);
+  animation: ringSpin 22s linear infinite reverse;
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.12) inset;
+}
+
+.ring--r3 {
+  inset: 20%;
+  border: 1px solid rgba(122, 92, 255, 0.35);
+  border-top-color: transparent;
+  animation: ringSpin 8s var(--ease-in-out) infinite;
+}
+
+/* Radar-style sweep */
+.ring--sweep {
+  inset: -4%;
+  background: conic-gradient(from 0deg, rgba(0, 212, 255, 0.4), transparent 16%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+  animation: ringSpin 3.4s linear infinite;
+  filter: drop-shadow(0 0 10px var(--accent-blue));
+}
+
+/* Thin tick crosshair */
+.ring--crosshair {
+  inset: 4%;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.22) 0deg 0.5deg, transparent 0.5deg 12deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 1px), #000 calc(100% - 1px));
+  animation: ringSpin 30s linear infinite reverse;
+}
+
+/* --- Logo ---------------------------------------------------------------- */
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  animation: logoIn 0.9s 0.45s var(--ease-out) forwards;
+}
+
+.logo__frame {
+  position: relative;
+  z-index: 0;
+  padding: 14px;
+  border-radius: 22px;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 34px rgba(0, 212, 255, 0.35),
+    0 0 80px rgba(0, 212, 255, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 0 22px rgba(0, 212, 255, 0.1);
+  animation: logoHalo 6s var(--ease-in-out) infinite;
+}
+
+/* Soft breathing halo behind the frame */
+.logo__frame::after {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.32), transparent 62%);
+  filter: blur(14px);
+  animation: logoHaloPulse 4.5s ease-in-out infinite;
+}
+
+.logo__img {
+  display: block;
+  height: clamp(128px, 23vmin, 210px);
+  width: auto;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+.logo__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(14px, 2.4vmin, 20px);
+  letter-spacing: 0.55em;
+  text-indent: 0.55em;
+  text-align: center;
+  color: var(--white);
+}
+
+.logo__name span {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(8px, 1.4vmin, 11px);
+  letter-spacing: 0.75em;
+  text-indent: 0.75em;
+  margin-top: 6px;
+  color: var(--accent-blue);
+  text-shadow: 0 0 14px var(--glow);
+}
+
+/* --- Telemetry ----------------------------------------------------------- */
+.telemetry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: min(80vw, 560px);
+  opacity: 0;
+  animation: telemetryIn 0.7s 0.7s var(--ease-out) forwards;
+}
+
+.mission-msg {
+  font-family: var(--font-display);
+  font-size: clamp(10px, 1.7vmin, 13px);
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-indent: 0.4em;
+  color: var(--accent-blue);
+  text-shadow: 0 0 18px var(--glow);
+  min-height: 1.6em;
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+}
+
+.mission-msg.is-hidden {
+  opacity: 0;
+  transform: translateY(6px) blur(3px);
+}
+
+.progress-pct {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(44px, 9vmin, 82px);
+  line-height: 1;
+  color: var(--white);
+  text-shadow: 0 0 22px var(--glow), 0 0 60px rgba(0, 212, 255, 0.4);
+  font-variant-numeric: tabular-nums;
+  animation: pctPulse 2.4s ease-in-out infinite;
+}
+
+.progress-pct__sym {
+  font-size: 0.42em;
+  color: var(--accent-blue);
+  margin-left: 4px;
+  vertical-align: super;
+}
+
+/* Glassmorphism neon progress bar */
+.progress {
+  position: relative;
+  width: 100%;
+  height: 14px;
+  border-radius: 99px;
+  background: linear-gradient(180deg, rgba(160, 174, 192, 0.12), rgba(160, 174, 192, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 26px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.progress__fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent-purple) 0%, #4D9BFF 40%, var(--accent-blue) 100%);
+  box-shadow: 0 0 18px var(--glow), 0 0 40px rgba(0, 212, 255, 0.4);
+  transition: width 0.5s var(--ease-out);
+}
+
+.progress__shine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 34%;
+  border-radius: 99px;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  animation: barShine 2.6s var(--ease-in-out) infinite;
+}
+
+/* --- MISSION READY state -------------------------------------------------- */
+.mission-ready {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  animation: readyIn 0.9s var(--ease-out) both;
+}
+
+.mission-ready__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 6.5vmin, 62px);
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  color: var(--white);
+  text-shadow: 0 0 18px rgba(0, 212, 255, 0.8), 0 0 70px var(--glow), 0 0 120px rgba(0, 212, 255, 0.5);
+  animation: readyGlow 2.2s ease-in-out infinite;
+}
+
+.mission-ready__welcome {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(11px, 2vmin, 15px);
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--accent-blue);
+  text-shadow: 0 0 14px var(--glow);
+}
+
+.mission-ready__enter {
+  margin-top: 10px;
+  padding: 14px 42px;
+  border-radius: 99px;
+  border: 1px solid rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.08);
+  backdrop-filter: blur(10px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--white);
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.25), inset 0 0 18px rgba(0, 212, 255, 0.12);
+  animation: ctaPulse 2.4s ease-in-out infinite;
+}
+
+.mission-ready__enter:hover {
+  background: rgba(0, 212, 255, 0.18);
+  box-shadow: 0 0 40px var(--glow), inset 0 0 24px rgba(0, 212, 255, 0.22);
+}
+
+.mission-ready__enter:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* 08 — HOMEPAGE REVEAL ------------------------------------------------------ */
+.site {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(110% 90% at 50% 0%, #0B1E3C 0%, var(--bg-secondary) 48%, var(--bg-deep) 100%);
+  opacity: 0;
+  transition: opacity 1.4s ease 0.15s;
+  overflow: auto;
+  scroll-behavior: smooth;
+  will-change: opacity;
+}
+
+.site.is-visible {
+  opacity: 1;
+}
+
+/* While the loader is playing, hold the homepage's entrance animations.
+   Removed by main.js when the site is revealed, so the topbar, nav, menu
+   links and hero play their full sequence in front of the user. The
+   satellite is held too so it starts a fresh crossing right on reveal. */
+body.is-booting .topbar,
+body.is-booting .topbar *,
+body.is-booting .nav,
+body.is-booting .nav *,
+body.is-booting .site-space__sat {
+  animation-play-state: paused;
+}
+
+.site__bg {
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='3' cy='6' r='1' fill='%23ffffff' fill-opacity='0.5'/%3E%3Ccircle cx='30' cy='12' r='0.8' fill='%2300D4FF'/%3E%3Ccircle cx='12' cy='30' r='1' fill='%23ffffff' fill-opacity='0.35'/%3E%3Ccircle cx='34' cy='34' r='0.6' fill='%237A5CFF'/%3E%3C/svg%3E");
+  animation: starFieldBg 220s linear infinite;
+}
+
+.site__nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 5vw;
+  font-family: var(--font-display);
+}
+
+.site__brand {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.3em;
+}
+
+.site__brand em {
+  font-style: normal;
+  color: var(--accent-blue);
+}
+
+.site__links {
+  display: flex;
+  gap: 34px;
+}
+
+.site__links a {
+  color: var(--grey);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.site__links a:hover {
+  color: var(--white);
+  text-shadow: 0 0 12px var(--glow);
+}
+
+.site__hero {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 6vw;
+  gap: 22px;
+}
+
+.site__eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  color: var(--accent-blue);
+  text-shadow: 0 0 14px var(--glow);
+}
+
+.site__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(30px, 7vmin, 68px);
+  line-height: 1.12;
+  letter-spacing: 0.06em;
+}
+
+.site__title span {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 26px rgba(0, 212, 255, 0.4));
+}
+
+.site__sub {
+  max-width: 560px;
+  color: var(--grey);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.site__cta {
+  margin-top: 12px;
+  padding: 16px 48px;
+  border-radius: 99px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: var(--bg-deep);
+  background: linear-gradient(90deg, var(--accent-blue), #7AD7FF);
+  box-shadow: 0 0 34px var(--glow);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease;
+}
+
+.site__cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 54px var(--glow), 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.site__footer {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--grey);
+}
+
+/* 09 — KEYFRAME LIBRARY ------------------------------------------------------ */
+@keyframes nebulaDrift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4%, 3%) scale(1.15); }
+}
+
+@keyframes nebulaPulse {
+  from { opacity: 0.35; transform: scale(0.92); }
+  to   { opacity: 0.6;  transform: scale(1.08); }
+}
+
+@keyframes raysSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  33%  { transform: translate(-2%, 2%); }
+  66%  { transform: translate(2%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes hudIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.78); }
+}
+
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes logoIn {
+  from { opacity: 0; transform: scale(0.82) translateY(10px); filter: blur(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+@keyframes logoHalo {
+  0%, 100% { box-shadow: 0 0 34px rgba(0, 212, 255, 0.35), 0 0 80px rgba(0, 212, 255, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 0 22px rgba(0, 212, 255, 0.1); }
+  50%      { box-shadow: 0 0 48px rgba(0, 212, 255, 0.5), 0 0 110px rgba(0, 212, 255, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 0 26px rgba(0, 212, 255, 0.14); }
+}
+
+@keyframes logoHaloPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+@keyframes telemetryIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pctPulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.72; }
+}
+
+@keyframes barShine {
+  0%   { transform: translateX(0); }
+  60%, 100% { transform: translateX(420%); }
+}
+
+@keyframes readyIn {
+  from { opacity: 0; transform: scale(1.15); filter: blur(8px); }
+  to   { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes readyGlow {
+  0%, 100% { text-shadow: 0 0 18px rgba(0, 212, 255, 0.8), 0 0 70px var(--glow); }
+  50%      { text-shadow: 0 0 26px rgba(0, 212, 255, 1), 0 0 90px var(--glow), 0 0 140px rgba(0, 212, 255, 0.6); }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 24px rgba(0, 212, 255, 0.25), inset 0 0 18px rgba(0, 212, 255, 0.12); }
+  50%      { box-shadow: 0 0 46px var(--glow), inset 0 0 26px rgba(0, 212, 255, 0.2); }
+}
+
+@keyframes starFieldBg {
+  from { background-position: 0 0; }
+  to   { background-position: 0 400px; }
+}
+
+/* 10 — RESPONSIVE BREAKPOINTS ------------------------------------------------ */
+@media (max-width: 900px) {
+  .hud { padding: 14px 16px; }
+  .hud__eyebrow { font-size: 8px; }
+  .hud__value { font-size: 13px; }
+}
+
+@media (max-width: 640px) {
+  /* Keep the frame clean — tuck corner HUDs */
+  .hud__eyebrow { display: none; }
+  .hud { padding: 10px 12px; }
+  .hud__value { font-size: 11px; }
+  .hud--tl { border-right: 0; border-bottom: 1px solid rgba(0, 212, 255, 0.14); }
+  .hud--tr { border-left: 0; border-bottom: 1px solid rgba(0, 212, 255, 0.14); }
+
+  .stage { gap: 14px; }
+  .rings { width: min(56vmin, 300px); height: min(56vmin, 300px); }
+
+  .logo__frame { padding: 10px; border-radius: 16px; }
+  .logo__img { height: clamp(92px, 18vmin, 140px); border-radius: 10px; }
+
+  .telemetry { width: min(84vw, 340px); gap: 12px; }
+  .progress-pct { font-size: clamp(38px, 13vmin, 56px); }
+  .progress { height: 11px; }
+
+  .site__links { display: none; }
+}
+
+/* Tablet: smaller scanner rings so they stay clear of the corners */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .rings { width: min(54vmin, 460px); height: min(54vmin, 460px); }
+}
+
+/* Short screens (mobile landscape / small laptops): compact the stage so
+   the progress bar can never be pushed out of view or covered */
+@media (max-height: 560px) {
+  .stage { gap: 10px; }
+  .rings { width: min(50vmin, 260px); height: min(50vmin, 260px); }
+  .logo__frame { padding: 8px; }
+  .logo__img { height: clamp(70px, 16vmin, 96px); }
+  .logo__name { display: none; }
+  .telemetry { gap: 8px; }
+  .progress-pct { font-size: clamp(30px, 10vmin, 40px); }
+  .mission-msg { font-size: 9px; }
+  .hud__eyebrow { display: none; }
+  .hud { padding: 8px 10px; }
+  .hud__value { font-size: 10px; }
+}
+
+@media (min-width: 1600px) {
+  .rings { width: min(46vmin, 620px); height: min(46vmin, 620px); }
+}
+
+/* --- Ultrawide: cap stage proportions -------------------------------------- */
+@media (min-width: 2400px) {
+  .rings { width: 560px; height: 560px; }
+}
+
+/* 11 — ACCESSIBILITY --------------------------------------------------------- */
+/* High-contrast focus ring for keyboard users */
+a:focus-visible,
+.mission-ready__enter:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 4px;
+}
+
+/* Respect reduced-motion preferences: keep it static and instant */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+
+  .loader.is-zooming {
+    transform: none;
+    filter: none;
+  }
+
+  .grain { display: none; }
+}
