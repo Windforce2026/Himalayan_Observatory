@@ -740,6 +740,176 @@ kbd {
   width: 100%;
 }
 
+/* --- floating controls: side dock + action FABs --------------------------- */
+.fab-stack,
+.side-dock {
+  position: fixed;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Bottom-right quick actions */
+.fab-stack {
+  right: 20px;
+  bottom: 20px;
+}
+
+.fab {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #cfe6ff;
+  background: rgba(7, 18, 36, 0.72);
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.fab:hover {
+  color: #ffffff;
+  border-color: rgba(0, 212, 255, 0.65);
+  box-shadow: 0 0 22px rgba(0, 212, 255, 0.35), 0 12px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+}
+
+.fab:active { transform: scale(0.94); }
+
+.fab svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* primary live-view action with radar pulse */
+.fab--live {
+  width: 56px;
+  height: 56px;
+  color: #031018;
+  background: linear-gradient(135deg, var(--accent-blue), #4DD7FF 55%, var(--accent-purple));
+  border-color: transparent;
+  box-shadow: 0 0 26px var(--glow), 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+.fab--live:hover {
+  color: #031018;
+  border-color: transparent;
+  box-shadow: 0 0 42px var(--glow), 0 14px 32px rgba(0, 0, 0, 0.5);
+}
+
+.fab__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 212, 255, 0.7);
+  animation: btnPulse 2.4s var(--ease-out) infinite;
+  pointer-events: none;
+}
+
+/* tooltip that slides out on hover */
+.fab__tip,
+.dock-btn__tip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  padding: 5px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #cfe6ff;
+  background: rgba(7, 18, 36, 0.92);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease-out);
+}
+
+.fab__tip { right: calc(100% + 14px); }
+.dock-btn__tip { left: calc(100% + 14px); }
+
+.fab:hover .fab__tip,
+.dock-btn:hover .dock-btn__tip {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* back-to-top: hidden until the page is scrolled */
+.fab--top {
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-out), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.fab-stack.is-scrolled .fab--top {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* side social/contact dock */
+.side-dock {
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  gap: 10px;
+}
+
+.side-dock::before {
+  content: "";
+  position: absolute;
+  top: -72px;
+  bottom: -72px;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.28), transparent);
+}
+
+.dock-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--grey);
+  background: rgba(7, 18, 36, 0.72);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.dock-btn:hover {
+  color: #ffffff;
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 0 18px rgba(0, 212, 255, 0.32);
+  transform: translateX(3px);
+}
+
+.dock-btn:active { transform: scale(0.92); }
+
+.dock-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* overlay is open → tuck the floating controls away */
+body.is-locked .fab-stack,
+body.is-locked .side-dock {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* --- hamburger ------------------------------------------------------------ */
 .burger {
   display: none;
@@ -1543,6 +1713,12 @@ kbd {
 
   .icon-btn { width: 38px; height: 38px; }
 
+  .side-dock { display: none; }
+
+  .fab-stack { right: 14px; bottom: 14px; gap: 10px; }
+  .fab { width: 44px; height: 44px; }
+  .fab--live { width: 52px; height: 52px; }
+
   .notif {
     right: 14px;
     left: 14px;
@@ -1588,8 +1764,15 @@ input:focus-visible,
 
   .btn__pulse,
   .icon-btn__ring,
+  .fab__ring,
   .site-space__sat,
   .float-icon {
     display: none;
+  }
+
+  body.is-locked .fab-stack,
+  body.is-locked .side-dock {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

@@ -51,6 +51,8 @@
     menu:      $('#menu'),
     menuLinks: $$('.menu__link'),
     mobileLinks: $$('.mobile-menu__link'),
+    fabStack:  $('#fabStack'),
+    fabTop:    $('#fabTop'),
   };
 
   // Links on both surfaces, keyed by their hash target
@@ -117,6 +119,11 @@
         dom.nav.classList.remove('is-compact');
       }
 
+      // Reveal the back-to-top FAB once you're down the page
+      if (dom.fabStack) {
+        dom.fabStack.classList.toggle('is-scrolled', y > 320);
+      }
+
       lastY = y;
       ticking = false;
     }
@@ -131,6 +138,13 @@
     function init() {
       onScroll();
       scrollEl.addEventListener('scroll', request, { passive: true });
+
+      // Smoothly glide back to the top of the site scroll container
+      if (dom.fabTop) {
+        dom.fabTop.addEventListener('click', () => {
+          scrollEl.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       // Release the entrance animation once it finishes so the CSS
       // `.is-hidden` transform (slide-up) can take effect on scroll.

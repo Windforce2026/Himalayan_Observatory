@@ -567,7 +567,9 @@ body.is-booting .topbar,
 body.is-booting .topbar *,
 body.is-booting .nav,
 body.is-booting .nav *,
-body.is-booting .site-space__sat {
+body.is-booting .site-space__sat,
+body.is-booting .fab-stack,
+body.is-booting .side-dock {
   animation-play-state: paused;
 }
 
