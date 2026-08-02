@@ -201,6 +201,40 @@ kbd {
   animation: satBlink 1.2s steps(2, start) infinite;
 }
 
+/* --- floating celestial icons -------------------------------------------- */
+.float-icon {
+  position: absolute;
+  z-index: 3;
+  width: var(--sz, 28px);
+  height: var(--sz, 28px);
+  color: var(--ic, #ffffff);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+  animation: floatBob var(--dur, 9s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+
+.float-icon__ico {
+  width: 100%;
+  height: 100%;
+}
+
+.float-icon__ico svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.float-icon--spin .float-icon__ico {
+  animation: floatSpin 30s linear infinite;
+}
+
+.float-icon--pulse .float-icon__ico {
+  animation: iconPulse 4s ease-in-out infinite;
+}
+
 /* Layered Himalayan mountain silhouettes (parallax via main.js) */
 .site-space__mountains {
   position: absolute;
@@ -1362,6 +1396,20 @@ kbd {
   50%      { opacity: 0.15; }
 }
 
+@keyframes floatBob {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-16px); }
+}
+
+@keyframes floatSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes iconPulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.18); }
+}
+
 @keyframes ssMistDrift {
   from { transform: translateX(-4%); }
   to   { transform: translateX(4%); }
@@ -1540,7 +1588,8 @@ input:focus-visible,
 
   .btn__pulse,
   .icon-btn__ring,
-  .site-space__sat {
+  .site-space__sat,
+  .float-icon {
     display: none;
   }
 }

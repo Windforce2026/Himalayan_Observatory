@@ -29,45 +29,113 @@
 
     <!-- Satellite crossing the night sky -->
     <div class="site-space__sat" aria-hidden="true">
-      <svg viewBox="0 0 140 84" fill="none">
-        <defs>
-          <linearGradient id="satPanel" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#2b6bd6"/>
-            <stop offset="0.55" stop-color="#123c8a"/>
-            <stop offset="1" stop-color="#081c46"/>
-          </linearGradient>
-          <linearGradient id="satBody" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#e4edff"/>
-            <stop offset="0.5" stop-color="#93a7c4"/>
-            <stop offset="1" stop-color="#33435f"/>
-          </linearGradient>
-          <linearGradient id="satTrail" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/>
-            <stop offset="0.7" stop-color="#7ad7ff" stop-opacity="0.16"/>
-            <stop offset="1" stop-color="#bcdcff" stop-opacity="0.6"/>
-          </linearGradient>
-        </defs>
+        <svg viewBox="0 0 140 84" fill="none">
+          <defs>
+            <linearGradient id="satPanel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2b6bd6"/>
+              <stop offset="0.55" stop-color="#123c8a"/>
+              <stop offset="1" stop-color="#081c46"/>
+            </linearGradient>
+            <linearGradient id="satBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e4edff"/>
+              <stop offset="0.5" stop-color="#93a7c4"/>
+              <stop offset="1" stop-color="#33435f"/>
+            </linearGradient>
+            <linearGradient id="satTrail" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/>
+              <stop offset="0.7" stop-color="#7ad7ff" stop-opacity="0.16"/>
+              <stop offset="1" stop-color="#bcdcff" stop-opacity="0.6"/>
+            </linearGradient>
+          </defs>
 
-        <path d="M0 42 L56 42" stroke="url(#satTrail)" stroke-width="2"/>
+          <path d="M0 42 L56 42" stroke="url(#satTrail)" stroke-width="2"/>
 
-        <rect x="6" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
-        <rect x="82" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
-        <path d="M18 29V43M30 29V43M42 29V43M54 29V43M94 29V43M106 29V43M118 29V43M130 29V43" stroke="#9ad7ff" stroke-opacity="0.4" stroke-width="1"/>
-        <rect x="52" y="33" width="4" height="6" fill="#8fa3c0"/>
-        <rect x="84" y="33" width="4" height="6" fill="#8fa3c0"/>
+          <rect x="6" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
+          <rect x="82" y="28" width="52" height="16" rx="2" fill="url(#satPanel)" stroke="#9ad7ff" stroke-opacity="0.4"/>
+          <path d="M18 29V43M30 29V43M42 29V43M54 29V43M94 29V43M106 29V43M118 29V43M130 29V43" stroke="#9ad7ff" stroke-opacity="0.4" stroke-width="1"/>
+          <rect x="52" y="33" width="4" height="6" fill="#8fa3c0"/>
+          <rect x="84" y="33" width="4" height="6" fill="#8fa3c0"/>
 
-        <rect x="56" y="14" width="28" height="44" rx="6" fill="url(#satBody)" stroke="#cfe0ff" stroke-opacity="0.7"/>
+          <rect x="56" y="14" width="28" height="44" rx="6" fill="url(#satBody)" stroke="#cfe0ff" stroke-opacity="0.7"/>
 
-        <path d="M70 14 L70 6" stroke="#e4edff" stroke-width="2"/>
-        <circle cx="70" cy="4.5" r="3" fill="#ffd166"/>
+          <path d="M70 14 L70 6" stroke="#e4edff" stroke-width="2"/>
+          <circle cx="70" cy="4.5" r="3" fill="#ffd166"/>
 
-        <rect x="60" y="20" width="20" height="9" rx="2" fill="#07152e"/>
-        <circle cx="65.5" cy="24.5" r="2" fill="#00d4ff"/>
-        <circle cx="74.5" cy="24.5" r="2" fill="#ff5c5c"/>
+          <rect x="60" y="20" width="20" height="9" rx="2" fill="#07152e"/>
+          <circle cx="65.5" cy="24.5" r="2" fill="#00d4ff"/>
+          <circle cx="74.5" cy="24.5" r="2" fill="#ff5c5c"/>
 
-        <circle class="sat-beacon" cx="70" cy="48" r="2.2" fill="#ffd166"/>
-      </svg>
-    </div>
+          <circle class="sat-beacon" cx="70" cy="48" r="2.2" fill="#ffd166"/>
+        </svg>
+      </div>
+
+      <!-- Floating celestial icons -->
+      <div class="float-icon float-icon--spin" style="left:7%; top:22%; --sz:38px; --dur:9s; --delay:0s; --ic:#7AD7FF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+            <circle cx="12" cy="12" r="5.5"/>
+            <ellipse cx="12" cy="12" rx="10" ry="3.6" transform="rotate(-18 12 12)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon" style="right:9%; top:16%; --sz:32px; --dur:7.5s; --delay:.9s; --ic:#FFFFFF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+            <circle cx="16" cy="8" r="4"/>
+            <path d="M13 11 L4 19 M15 11 L20 20"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon float-icon--pulse" style="left:5%; top:50%; --sz:24px; --dur:6.5s; --delay:1.6s; --ic:#FFD166;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2 C12.6 6.8 17.2 11.4 22 12 C17.2 12.6 12.6 17.2 12 22 C11.4 17.2 6.8 12.6 2 12 C6.8 11.4 11.4 6.8 12 2 Z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon" style="right:8%; top:46%; --sz:36px; --dur:8.5s; --delay:.4s; --ic:#B8A6FF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 5 L18 9 L15.5 14 L8.5 10 Z"/>
+            <path d="M9.5 11 L4 20"/>
+            <path d="M11 13.5 L13 20"/>
+            <path d="M18 9 L22 6.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon" style="right:18%; top:64%; --sz:32px; --dur:10s; --delay:2.1s; --ic:#FFFFFF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon" style="left:14%; top:58%; --sz:32px; --dur:7s; --delay:1.2s; --ic:#7AD7FF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="float-icon float-icon--spin" style="right:32%; top:9%; --sz:38px; --dur:11s; --delay:2.6s; --ic:#B8A6FF;">
+        <div class="float-icon__ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+            <ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(30 12 12)"/>
+            <ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(-30 12 12)"/>
+            <ellipse cx="12" cy="12" rx="9.5" ry="4" transform="rotate(90 12 12)"/>
+          </svg>
+        </div>
+      </div>
 
     <div class="site-space__mountains">
       <svg class="site-space__range site-space__range--back" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
