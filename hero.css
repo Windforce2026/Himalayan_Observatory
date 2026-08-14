@@ -1,0 +1,405 @@
+/* ============================================================
+   HIMALAYAN OBSERVATORY — HERO
+   Cinematic 100vh opener. Layered depth, glass, neon, parallax.
+   ============================================================ */
+
+:root {
+  --ink:        #02040a;
+  --ink-soft:   #0b1326;
+  --ice:        #eaf4ff;
+  --ice-dim:    #9fb4d4;
+  --cyan:       #7ad7ff;
+  --cyan-soft:  rgba(122, 215, 255, 0.55);
+  --violet:     #b8a6ff;
+  --amber:      #ffd166;
+  --glass:      rgba(20, 32, 58, 0.34);
+  --glass-brd:  rgba(150, 216, 255, 0.16);
+  --glass-edge: rgba(150, 216, 255, 0.16);
+  --serif:      "Cormorant Garamond", Georgia, serif;
+  --sans:       "Inter", system-ui, sans-serif;
+  --mono:       "Share Tech Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ice);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body { overflow-x: hidden; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   HERO FRAME
+   ============================================================ */
+.hero {
+  position: relative;
+  isolation: isolate;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ice);
+}
+
+/* ---------- Layer 1 : deep space gradient ---------- */
+.hero__space {
+  position: absolute; inset: 0; z-index: -10;
+  background:
+    radial-gradient(120% 90% at 50% 0%, #0a1226 0%, #05081245 0%, transparent 60%),
+    radial-gradient(90% 60% at 70% 10%, #16203d 0%, transparent 55%),
+    linear-gradient(180deg, #03050e 0%, #0a122a 45%, #0a0e1e 78%, #03050b 100%);
+}
+
+/* ---------- Canvas layers (parallax), ordered front-to-back z ---------- */
+.layer { position: absolute; inset: 0; z-index: -9; pointer-events: none; opacity: 0; }
+body.no-gsap .layer { opacity: 1; }
+.layer--milky { z-index: -8; }
+.layer--fx    { z-index: -4; }
+
+/* ---------- Layer 4 : nebula glows ---------- */
+.nebula {
+  position: absolute; z-index: -6;
+  width: 60vmax; height: 60vmax; border-radius: 50%;
+  filter: blur(90px); opacity: 0; mix-blend-mode: screen; will-change: transform;
+}
+.nebula--teal {
+  top: -12%; right: -8%;
+  background: radial-gradient(circle, rgba(36, 180, 220, 0.5), transparent 62%);
+  animation: breathe 22s ease-in-out infinite;
+}
+.nebula--purple {
+  bottom: -18%; left: -6%;
+  background: radial-gradient(circle, rgba(120, 90, 210, 0.46), transparent 60%);
+  animation: breathe 26s ease-in-out 3s infinite;
+}
+.nebula--rose {
+  top: 12%; left: 20%;
+  background: radial-gradient(circle, rgba(200, 120, 190, 0.3), transparent 62%);
+  animation: breathe 30s ease-in-out 6s infinite;
+}
+@keyframes breathe {
+  0%, 100% { opacity: 0; transform: scale(0.85) translateY(0); }
+  50%      { opacity: 0.9; transform: scale(1.08) translateY(-2.5%); }
+}
+
+/* ---------- Milky golden band ------------- */
+.hero__golden {
+  position: absolute; z-index: -8; left: 4%; right: 4%; top: 6%;
+  height: 34%;
+  background:
+    radial-gradient(50% 70% at 50% 40%, rgba(255, 236, 200, 0.10), transparent 70%),
+    radial-gradient(50% 90% at 50% 60%, rgba(180, 200, 255, 0.08), transparent 72%);
+  filter: blur(6px); mix-blend-mode: screen; opacity: 0;
+}
+
+/* ---------- Satellite ---------- */
+.hero__sat {
+  position: absolute; z-index: -5; width: 130px; opacity: 0;
+  left: -10%; top: 18%; will-change: transform;
+  filter: drop-shadow(0 0 6px rgba(122, 215, 255, 0.7));
+}
+
+/* ---------- Constellations ---------- */
+.sky { position: absolute; inset: 0; z-index: -5; pointer-events: none; }
+.sky .con {
+  position: absolute; left: 0; top: 0; opacity: 0;
+  animation: conPulse 12s ease-in-out infinite;
+}
+@keyframes conPulse { 0%,100%{opacity:.06} 50%{opacity:.85} }
+
+/* ---------- Layer 5 & 6 : mountains + dome ---------- */
+.hero__mountains {
+  position: absolute; inset: 0; z-index: -2; will-change: transform;
+}
+.range { position: absolute; left: 0; width: 100%; height: 52%; bottom: 0; display:block; }
+.range--back   { bottom: 14%; height: 48%; }
+.range--mid    { bottom: 6%;  height: 50%; }
+.range--front  { bottom: 0;   height: 46%; }
+
+/* Observatory dome + telescope */
+.dome__slit   { filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.8)); }
+.dome__beam   { opacity: 0; }
+.dome__telescope { transform-origin: 842px 300px; }
+.dome__cap    { opacity: 0.6; }
+
+/* ---------- Layer 7 : foreground mist / fog ---------- */
+.mist {
+  position: absolute; bottom: 0; left: -10%; width: 120%; height: 40%;
+  background: radial-gradient(60% 90% at 20% 100%, rgba(180, 216, 240, 0.10), transparent 70%);
+  filter: blur(34px); will-change: transform;
+}
+.mist--2 { bottom: -6%; animation: drift 30s ease-in-out infinite; }
+.mist--1 { bottom: 8%;  opacity: 0.7; animation: drift 40s ease-in-out 5s infinite reverse; }
+@keyframes drift {
+  0%, 100% { transform: translateX(-4%); }
+  50%      { transform: translateX(4%); }
+}
+
+.ridge-glow {
+  position: absolute; bottom: 22%; left: 0; width: 100%; height: 30%;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(18, 40, 78, 0.9), transparent);
+  filter: blur(22px); pointer-events: none;
+}
+
+/* ---------- Vignette + grain ---------- */
+.vignette {
+  position: absolute; inset: 0; z-index: 9; pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(2, 4, 10, 0.75) 100%);
+}
+.grain {
+  position: absolute; inset: -50%; z-index: 10; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 0.9s steps(3) infinite;
+}
+@keyframes grainShift { 0%{transform:translate(0,0)} 33%{transform:translate(-2%,1%)} 66%{transform:translate(1%,-2%)} 100%{transform:translate(0,0)} }
+
+/* ============================================================
+   FOREGROUND CONTENT
+   ============================================================ */
+.hero__content {
+  position: relative; z-index: 20;
+  max-width: 780px; width: 92%;
+  text-align: center;
+  pointer-events: none;
+  padding-top: 4rem;
+}
+.hero__content > * { pointer-events: auto; }
+
+.brand {
+  position: absolute; top: 28px; left: 34px; z-index: 30;
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--ice); letter-spacing: 0.12em;
+  opacity: 0;
+}
+.brand__mark { width: 34px; height: 34px; color: var(--cyan); }
+.brand__name { font-family: var(--mono); font-size: 0.78rem; }
+.brand__name em { font-style: normal; color: var(--ice-dim); }
+
+.eyebrow {
+  font-family: var(--mono); font-size: 0.72rem;
+  letter-spacing: 0.42em; text-transform: uppercase;
+  color: var(--cyan); margin: 0 0 1.6rem;
+}
+
+.title {
+  margin: 0; font-family: var(--serif); font-weight: 500;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 1.04; letter-spacing: 0.02em; color: var(--ice);
+}
+.title__line { display: block; overflow: hidden; }
+.title__line--last { color: var(--ice); }
+.title__accent { font-style: italic; font-weight: 300; }
+.title__glow {
+  background: linear-gradient(120deg, #eef7ff 0%, #7ad7ff 42%, #b8a6ff 78%, #ffd166 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  text-shadow: 0 0 34px rgba(122, 215, 255, 0.32);
+}
+.w {
+  display: inline-block; will-change: transform; transform: translateY(120%);
+}
+
+.lede {
+  max-width: 560px; margin: 1.6rem auto 0;
+  font-size: clamp(1rem, 1.4vw, 1.16rem); font-weight: 300; line-height: 1.75;
+  color: var(--ice-dim);
+}
+
+.cta {
+  margin-top: 2.2rem; display: flex; justify-content: center;
+  gap: 1rem; flex-wrap: wrap;
+}
+
+/* ============================================================
+   BUTTONS — glassmorphism, neon, magnetic
+   ============================================================ */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.6rem; padding: 1rem 2.2rem;
+  font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase;
+  border-radius: 999px; cursor: pointer; user-select: none;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s, background 0.4s, color 0.4s;
+  overflow: hidden; will-change: transform;
+}
+.btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+.btn--primary {
+  color: #04101e; font-weight: 600;
+  background: linear-gradient(135deg, #aee6ff, #7ad7ff 45%, #5cc2ff);
+  box-shadow: 0 0 0 1px rgba(160, 230, 255, 0.5), 0 0 26px rgba(122, 215, 255, 0.35), inset 0 0 14px rgba(255,255,255,0.35);
+}
+.btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 34px rgba(122, 215, 255, 0.5), 0 0 44px rgba(122, 215, 255, 0.55), inset 0 0 18px rgba(255,255,255,0.5);
+}
+.btn--primary .btn__spark {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #04101e; box-shadow: 0 0 8px rgba(4,16,30,.7);
+}
+
+.btn--ghost {
+  color: var(--ice);
+  background: var(--glass);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-brd);
+  box-shadow: inset 0 0 20px rgba(150,216,255,0.05);
+}
+.btn--ghost .btn__ring {
+  width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid var(--cyan-soft); position: relative;
+}
+.btn--ghost .btn__ring::after {
+  content: ""; position: absolute; inset: -5px; border-radius: 50%;
+  border: 1px solid var(--cyan-soft); opacity: 0; animation: ring 2.6s ease-out infinite;
+}
+@keyframes ring { 0%{transform:scale(.6);opacity:.9} 70%{transform:scale(1.4);opacity:0} 100%{opacity:0} }
+.btn--ghost:hover {
+  transform: translateY(-3px);
+  border-color: var(--cyan-soft);
+  box-shadow: 0 8px 30px rgba(122,215,255,0.25), inset 0 0 22px rgba(122,215,255,0.12);
+  color: var(--ice);
+}
+
+/* ============================================================
+   LIVE INFO GLASS CARD
+   ============================================================ */
+.livecard {
+  position: absolute; right: 4%; bottom: 14%; z-index: 22;
+  width: 248px; padding: 1.1rem 1.2rem;
+  background: var(--glass);
+  backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid var(--glass-brd); border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.livecard__head {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.2em;
+  color: var(--ice-dim); padding-bottom: 0.7rem; border-bottom: 1px solid var(--glass-brd);
+}
+.livecard__dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #57f5a0;
+  box-shadow: 0 0 10px #57f5a0; animation: blink 2s ease infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.35} }
+.livecard__ago { margin-left: auto; font-size: 0.6rem; color: var(--ice-dim); }
+
+.livecard__rows { list-style: none; margin: 0; padding: 0; }
+.livecard__row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.62rem 0; border-bottom: 1px dashed rgba(150,216,255,0.12);
+  font-size: 0.82rem;
+}
+.livecard__row:last-of-type { border-bottom: none; }
+.livecard__name { color: var(--ice-dim); letter-spacing: 0.04em; font-weight: 300; }
+.livecard__val { font-family: var(--mono); color: var(--ice); font-size: 0.95rem; }
+.livecard__val i { font-style: normal; color: var(--cyan); font-size: 0.7rem; margin-left: 2px; }
+
+.livecard__index { display: flex; align-items: center; gap: 0.7rem; }
+.livecard__meter {
+  position: relative; width: 74px; height: 5px; border-radius: 4px;
+  background: rgba(150,216,255,0.15); overflow: hidden;
+}
+#astroFill {
+  position: absolute; inset: 0; width: 0%; border-radius: 4px;
+  background: linear-gradient(90deg, #7ad7ff, #57f5a0);
+  box-shadow: 0 0 12px rgba(87,245,160,0.7);
+}
+
+/* ============================================================
+   STATISTICS
+   ============================================================ */
+.stats {
+  position: absolute; left: 5%; bottom: 18%; z-index: 22;
+  display: grid; grid-template-columns: repeat(2, auto); gap: 1.4rem 2.6rem;
+}
+.stat { text-align: left; }
+.stat__value {
+  font-family: var(--serif); font-size: clamp(1.7rem, 2.4vw, 2.2rem); font-weight: 600;
+  color: var(--ice); line-height: 1;
+}
+.stat__value::after { content: attr(data-suffix); font-family: var(--mono); font-size: 0.9rem; color: var(--cyan); margin-left: 3px; }
+.stat__label { display: block; margin-top: 0.4rem; font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ice-dim); }
+
+/* ============================================================
+   SCROLL CUE
+   ============================================================ */
+.scrollcue {
+  position: absolute; left: 50%; bottom: 3%; transform: translateX(-50%);
+  z-index: 22; display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  font-family: var(--mono); font-size: 0.64rem; letter-spacing: 0.34em; text-transform: uppercase;
+  color: var(--ice-dim);
+}
+.scrollcue__arrow { width: 24px; height: 24px; animation: nudge 1.8s ease-in-out infinite; }
+@keyframes nudge { 0%,100%{transform:translateY(0);opacity:.6} 50%{transform:translateY(8px);opacity:1} }
+.scrollcue:hover { color: var(--cyan); }
+
+/* ============================================================
+   AFTER SECTION (scroll target)
+   ============================================================ */
+.after {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); letter-spacing: 0.3em; color: var(--ice-dim);
+  background: radial-gradient(120% 100% at 50% 0%, #060a18, #02040a);
+}
+
+/* ============================================================
+   ENTRY / REVEAL state (driven by JS)
+   ============================================================ */
+[data-reveal] { opacity: 0; }
+body.ready .hero__golden { opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .livecard { right: 3%; width: 224px; }
+  .stats { left: 4%; gap: 1rem 2rem; }
+}
+@media (max-width: 820px) {
+  .livecard, .stats { display: none; }          /* keep hero uncluttered on tablets / phones */
+  .hero__content { padding-top: 6vh; }
+  .scrollcue { bottom: 20px; }
+}
+@media (max-width: 520px) {
+  .brand { left: 18px; top: 18px; }
+  .brand__name { font-size: 0.7rem; }
+  .cta { flex-direction: column; align-items: center; }
+  .btn { width: 100%; }
+}
+@media (min-width: 2000px) {
+  .hero__content { max-width: 1000px; }
+  .title { font-size: 7.5rem; }
+}
+
+/* ---- graceful fallback if GSAP fails to load ---- */
+body.no-gsap [data-reveal] { opacity: 1 !important; }
+body.no-gsap .w { transform: none !important; }
+body.no-gsap .hero__golden { opacity: 1; }
+body.no-gsap .nebula { opacity: 0.6; }
+
+/* ============================================================
+   ACCESSIBILITY — reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] { opacity: 1 !important; }
+  .w { transform: none !important; }
+  .layer { opacity: 1 !important; }
+  .nebula, .grain, .mist, .hero__sat, .sky .con, .hero__golden { opacity: 0 !important; }
+  body { overflow-x: hidden; }
+}

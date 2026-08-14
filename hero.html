@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#02040A" />
+  <meta name="description" content="Himalayan Observatory — a private night beneath the Milky Way, perched at 3,650 metres above the roof of the world." />
+  <title>Himalayan Observatory — Where the Cosmos Awakens</title>
+
+  <!-- Premium observatory typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="hero.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO  (100vh cinematic opener)
+       ============================================================ -->
+  <main class="hero" id="hero" aria-label="Himalayan Observatory welcome">
+
+    <!-- Brand mark, top-left -->
+    <a class="brand" href="#home" aria-label="Himalayan Observatory — home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="1.4" opacity="0.7"/>
+          <circle cx="16" cy="16" r="8" stroke="currentColor" stroke-width="1.2" opacity="0.5"/>
+          <path d="M16 2v6M16 24v6M2 16h6M24 16h6M6.3 6.3l4.2 4.2M21.5 21.5l4.2 4.2M25.7 6.3l-4.2 4.2M10.5 21.5l-4.2 4.2" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+          <circle cx="16" cy="16" r="1.6" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand__name">HIMALAYAN <em>OBSERVATORY</em></span>
+    </a>
+
+    <!-- ============================================================
+         LAYER 1 — deep space gradient
+         ============================================================ -->
+    <div class="hero__space" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         LAYER 2 — thousands of tiny animated stars (canvas)
+         ============================================================ -->
+    <canvas class="layer layer--stars" id="stars" aria-hidden="true"></canvas>
+
+    <!-- ============================================================
+         LAYER 3 — Milky Way stretching across the sky
+         (nebulous glow handled by milky canvas; a soft band here too)
+         ============================================================ -->
+    <div class="hero__golden" aria-hidden="true"></div>
+    <canvas class="layer layer--milky" id="milky" aria-hidden="true"></canvas>
+
+    <!-- ============================================================
+         LAYER 4 — soft animated nebula glows
+         ============================================================ -->
+    <div class="nebula nebula--teal" aria-hidden="true"></div>
+    <div class="nebula nebula--purple" aria-hidden="true"></div>
+    <div class="nebula nebula--rose" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         Shooting stars + satellites + dust (canvas, foreground)
+         ============================================================ -->
+    <canvas class="layer layer--fx" id="fx" aria-hidden="true"></canvas>
+
+    <!-- Satellite (DOM/SVG for crispness) -->
+    <div class="hero__sat" id="satellite" aria-hidden="true">
+      <svg viewBox="0 0 140 84" fill="none">
+        <defs>
+          <linearGradient id="satBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e4edff"/><stop offset="0.5" stop-color="#93a7c4"/><stop offset="1" stop-color="#33435f"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 42 L58 42" stroke="#7ad7ff" stroke-opacity="0.35" stroke-width="2"/>
+        <rect x="6" y="30" width="52" height="14" rx="2" fill="#123c8a" stroke="#9ad7ff" opacity="0.8"/>
+        <rect x="84" y="30" width="50" height="14" rx="2" fill="#123c8a" stroke="#9ad7ff" opacity="0.8"/>
+        <rect x="58" y="16" width="26" height="42" rx="6" fill="url(#satBody)" stroke="#cfe0ff" opacity="0.9"/>
+        <path d="M72 16V8" stroke="#e4edff" stroke-width="2"/><circle cx="72" cy="6" r="3" fill="#ffd166"/>
+        <rect x="62" y="22" width="16" height="8" rx="2" fill="#07152e"/>
+        <circle cx="68" cy="26" r="2" fill="#00d4ff"/><circle cx="75" cy="26" r="2" fill="#ff5c5c"/>
+      </svg>
+    </div>
+
+    <!-- Constellations -->
+    <div class="sky" id="constellations" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         LAYER 5 & 6 — Himalayan silhouettes + observatory dome
+         ============================================================ -->
+    <div class="hero__mountains" id="mountains" aria-hidden="true">
+      <svg class="range range--back" viewBox="0 0 1600 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="rBack" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#26395e" stop-opacity="0"/><stop offset="0.5" stop-color="#26395e" stop-opacity="0.55"/><stop offset="1" stop-color="#26395e" stop-opacity="0.9"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 262 L150 210 L300 252 L470 190 L620 254 L800 182 L980 238 L1160 186 L1330 244 L1480 206 L1600 246 L1600 400 Z" fill="url(#rBack)"/>
+      </svg>
+
+      <svg class="range range--mid" viewBox="0 0 1600 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="rMid" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0d1a33" stop-opacity="0"/><stop offset="0.45" stop-color="#0d1a33" stop-opacity="0.75"/><stop offset="1" stop-color="#0d1a33" stop-opacity="0.96"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 300 L200 268 L380 320 L560 252 L740 310 L920 240 L1110 304 L1300 262 L1460 314 L1600 272 L1600 400 Z" fill="url(#rMid)"/>
+      </svg>
+
+      <svg class="range range--front" viewBox="0 0 1600 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="rFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#040a16" stop-opacity="0"/><stop offset="0.4" stop-color="#040a16" stop-opacity="0.88"/><stop offset="1" stop-color="#040a16" stop-opacity="0.99"/>
+          </linearGradient>
+          <linearGradient id="rBeam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/><stop offset="1" stop-color="#7ad7ff" stop-opacity="0.32"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 400 L0 352 L180 330 L340 360 L520 322 L700 360 L880 328 L1050 352 L1230 318 L1400 350 L1560 330 L1600 344 L1600 400 Z" fill="url(#rFront)"/>
+        <g class="dome" id="dome">
+          <rect x="806" y="300" width="56" height="14" rx="3" fill="#050b16"/>
+          <path class="dome__shell" d="M808 300 A26 26 0 0 1 860 300 Z" fill="#07101f"/>
+          <path class="dome__slit" d="M828 274 L836 274 L836 300 L828 300 Z" fill="#00d4ff" opacity="0.9"/>
+          <path class="dome__beam" d="M822 286 L842 286 L862 120 L802 120 Z" fill="url(#rBeam)"/>
+          <path class="dome__telescope" d="M834 286 L850 300 L856 296 L838 280 Z" fill="#0a1a33"/>
+          <circle class="dome__cap" cx="832" cy="300" r="24" fill="none" stroke="#153053" stroke-width="1.5"/>
+        </g>
+      </svg>
+
+      <!-- LAYER 7 — foreground fog / mist -->
+      <div class="mist mist--1" aria-hidden="true"></div>
+      <div class="mist mist--2" aria-hidden="true"></div>
+    </div>
+
+    <!-- Gaussian glow hugging the ridge (atmosphere) -->
+    <div class="ridge-glow" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         FOREGROUND CONTENT
+         ============================================================ -->
+    <div class="hero__content" id="content">
+      <p class="eyebrow" id="eyebrow" data-reveal>THE ROOF OF THE WORLD · 28.5°N — 83.9°E</p>
+
+      <h1 class="title" id="title">
+        <span class="title__line"><span class="w">AMID</span> <span class="w">THE</span></span>
+        <span class="title__line"><span class="w title__accent">SILENT</span> <span class="w title__accent">PEAKS</span></span>
+        <span class="title__line"><span class="w">THE</span> <span class="w">COSMOS</span></span>
+        <span class="title__line title__line--last"><span class="w title__glow">AWAKENS</span></span>
+      </h1>
+
+      <p class="lede" id="lede" data-reveal>
+        Perched at 3,650 metres where the air is thin and the sky is dark, we open the dome to a
+        private night beneath the Milky Way — escorted by astronomers, wrapped in warmth, and
+        suspended in absolute Himalayan silence.
+      </p>
+
+      <div class="cta" id="cta" data-reveal>
+        <a class="btn btn--primary" href="#book">
+          <span class="btn__spark" aria-hidden="true"></span>
+          <span class="btn__label">Book Your Experience</span>
+        </a>
+        <a class="btn btn--ghost" href="#observatory">
+          <span class="btn__ring" aria-hidden="true"></span>
+          <span class="btn__label">Explore Observatory</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Live information glass card -->
+    <aside class="livecard" id="livecard" data-reveal aria-label="Current sky conditions">
+      <header class="livecard__head">
+        <span class="livecard__dot" aria-hidden="true"></span>
+        <span class="livecard__label">LIVE CONDITIONS</span>
+        <span class="livecard__ago" id="liveAgo">now</span>
+      </header>
+      <ul class="livecard__rows">
+        <li class="livecard__row">
+          <span class="livecard__name">Moon Phase</span>
+          <span class="livecard__val"><span data-live="moon">0</span><i aria-hidden="true">%</i></span>
+        </li>
+        <li class="livecard__row">
+          <span class="livecard__name">Sky Visibility</span>
+          <span class="livecard__val"><span data-live="seeing">0</span><i aria-hidden="true">/ 5</i></span>
+        </li>
+        <li class="livecard__row">
+          <span class="livecard__name">Team</span>
+          <span class="livecard__val"><span data-live="temp">0</span><i aria-hidden="true">°C</i></span>
+        </li>
+        <li class="livecard__row">
+          <span class="livecard__name">Altitude</span>
+          <span class="livecard__val"><span data-live="alt">0</span><i aria-hidden="true"> m</i></span>
+        </li>
+        <li class="livecard__row livecard__row--index">
+          <span class="livecard__name">Astronomy Index</span>
+          <span class="livecard__index">
+            <span class="livecard__meter"><span id="astroFill" aria-hidden="true"></span></span>
+            <span class="livecard__val"><span data-live="astro">0</span></span>
+          </span>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Statistics -->
+    <section class="stats" id="stats" data-reveal aria-label="Observatory statistics">
+      <div class="stat">
+        <span class="stat__value" data-count="48" data-suffix="K">0</span>
+        <span class="stat__label">Visitors</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value" data-count="320" data-suffix="+">0</span>
+        <span class="stat__label">Events</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value" data-count="12">0</span>
+        <span class="stat__label">Telescopes</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value" data-count="25" data-suffix="yrs">0</span>
+        <span class="stat__label">Experience</span>
+      </div>
+    </section>
+
+    <!-- Scroll cue -->
+    <a class="scrollcue" href="#about" data-reveal aria-label="Scroll to explore more">
+      <span class="scrollcue__label">Explore Beyond</span>
+      <svg class="scrollcue__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 4v14M5 11l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </main>
+
+  <!-- Demoted following section so the cinematic scroll cue leads somewhere -->
+  <footer class="after" id="about">
+    <span>Himalayan Observatory · the scroll continues…</span>
+  </footer>
+
+  <!-- GSAP animation library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Three.js (loaded async; graceful fallback if it fails) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- Hero logic -->
+  <script defer src="hero.js"></script>
+</body>
+</html>

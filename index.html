@@ -4,8 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#02040A" />
-  <meta name="description" content="Himalayan Observatory — a world-class observatory perched in the Himalayas, where the sky is so dark it almost glows." />
+  <meta name="description" content="Himalayan Observatory — a working observatory and astro-experience destination in the Himalayas. Stargazing, telescopes, events, an astronomy academy and a sky so dark it almost glows." />
   <title>Himalayan Observatory — Above the Clouds, Below the Stars</title>
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Himalayan Observatory" />
+  <meta property="og:title" content="Himalayan Observatory — Above the Clouds, Below the Stars" />
+  <meta property="og:description" content="A working observatory and astro-experience destination in the Himalayas. Stargazing, telescopes, events, an astronomy academy and a sky so dark it almost glows." />
+  <meta property="og:image" content="assets/logo_himalayan.jpeg" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Himalayan Observatory — Above the Clouds, Below the Stars" />
+  <meta name="twitter:description" content="A working observatory and astro-experience destination in the Himalayas." />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Himalayan Observatory",
+    "description": "An observatory and astro-experience destination in the Himalayas — astronomy, education and night-sky experiences.",
+    "url": "/",
+    "logo": "assets/logo_himalayan.jpeg",
+    "location": {
+      "@type": "Place",
+      "geo": { "@type": "GeoCoordinates", "latitude": 28.5, "longitude": 83.9 }
+    }
+  }
+  </script>
 
   <!-- Google Fonts: premium aerospace typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,6 +45,7 @@
   <!-- Loader sequence styles, then the command-interface site styles -->
   <link rel="stylesheet" href="css/loader.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body class="is-booting">
 
@@ -540,22 +568,1124 @@
         </div>
       </section>
 
-      <section class="demo" id="about"><h2>About</h2></section>
-      <section class="demo" id="observatory"><h2>Observatory</h2></section>
-      <section class="demo" id="experiences"><h2>Experiences</h2></section>
-      <section class="demo" id="events"><h2>Events</h2></section>
-      <section class="demo" id="academy"><h2>Academy</h2></section>
-      <section class="demo" id="gallery"><h2>Gallery</h2></section>
-      <section class="demo" id="blog"><h2>Blog</h2></section>
-      <section class="demo" id="games"><h2>Games</h2></section>
-      <section class="demo" id="contact"><h2>Contact</h2></section>
+      <!-- ============================================================
+           SECTION 02 · THE OBSERVATORY
+           ============================================================ -->
+      <section class="section obs" id="observatory">
+        <span class="section-anchor" id="about" aria-hidden="true"></span>
+        <div class="section__inner">
+          <div class="obs__grid">
+            <div class="obs-visual reveal" role="img" aria-label="The observatory dome on a Himalayan ridge beneath the Milky Way">
+              <div class="obs-visual__scene">
+                <div class="obs-visual__milky" aria-hidden="true"></div>
+                <div class="obs-visual__neb obs-visual__neb--1" aria-hidden="true"></div>
+                <div class="obs-visual__neb obs-visual__neb--2" aria-hidden="true"></div>
+                <div class="obs-visual__moon" aria-hidden="true"></div>
+                <div class="obs-visual__mountains" aria-hidden="true">
+                  <svg viewBox="0 0 1600 400" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="obsBack" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#1b2c4e" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#1b2c4e" stop-opacity="0.55"/>
+                        <stop offset="1" stop-color="#1b2c4e" stop-opacity="0.9"/>
+                      </linearGradient>
+                      <linearGradient id="obsMid" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#0c1a33" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#0c1a33" stop-opacity="0.7"/>
+                        <stop offset="1" stop-color="#0c1a33" stop-opacity="0.95"/>
+                      </linearGradient>
+                      <linearGradient id="obsFront" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#050b16" stop-opacity="0"/>
+                        <stop offset="0.5" stop-color="#050b16" stop-opacity="0.85"/>
+                        <stop offset="1" stop-color="#050b16" stop-opacity="0.98"/>
+                      </linearGradient>
+                      <linearGradient id="obsBeam" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="#7ad7ff" stop-opacity="0"/>
+                        <stop offset="1" stop-color="#7ad7ff" stop-opacity="0.4"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0 400 L0 258 L130 208 L250 246 L410 186 L540 238 L680 168 L820 220 L960 186 L1100 238 L1240 172 L1380 224 L1500 200 L1600 240 L1600 400 Z" fill="url(#obsBack)"/>
+                    <path d="M0 400 L0 320 L180 268 L340 308 L500 250 L660 298 L820 242 L980 296 L1140 252 L1300 304 L1460 264 L1600 300 L1600 400 Z" fill="url(#obsMid)"/>
+                    <path d="M0 400 L0 372 L150 338 L300 364 L460 330 L620 366 L800 330 L862 300 L940 336 L1100 352 L1260 318 L1420 352 L1540 330 L1600 346 L1600 400 Z" fill="url(#obsFront)"/>
+                    <g class="obs-visual__dome">
+                      <rect x="840" y="296" width="44" height="12" rx="2" fill="#07101f"/>
+                      <path d="M842 296 A20 20 0 0 1 882 296 Z" fill="#0a1428"/>
+                      <path class="obs-visual__dome-slit" d="M858 276 L862 276 L862 296 L858 296 Z" fill="#00d4ff" opacity="0.9"/>
+                      <path class="obs-visual__beam" d="M854 282 L866 282 L878 148 L842 148 Z" fill="url(#obsBeam)"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="obs-visual__mist" aria-hidden="true"></div>
+              </div>
+              <span class="obs-visual__coords">28.5°N · 83.9°E · 3,650 M</span>
+              <span class="obs-visual__scan" aria-hidden="true"></span>
+            </div>
 
-      <footer class="demo__footer">
-        <span>28.5°N · 83.9°E · 3,650 M</span>
-        <span>Himalayan Observatory · Command Interface</span>
+            <div class="obs__content">
+              <p class="sec-eyebrow reveal">THE OBSERVATORY</p>
+              <h2 class="sec-title reveal" style="--rd:.1s">A Gateway Between <span>Earth and the Cosmos</span></h2>
+              <p class="sec-lede reveal" style="--rd:.18s">Perched at 3,650 metres in the heart of the Himalayas, the observatory was built for a single purpose — to place you face to face with the night sky.</p>
+              <p class="sec-lede reveal" style="--rd:.26s">Its instruments and astronomers do more than observe. They translate the science of stars, planets and nebulae into experiences you can see with your own eyes.</p>
+              <div class="obs__facts">
+                <div class="obs__fact reveal" style="--rd:.34s">
+                  <span class="obs__fact-label">OBSERVATORY</span>
+                  <span class="obs__fact-value">HIMALAYAS</span>
+                </div>
+                <div class="obs__fact reveal" style="--rd:.42s">
+                  <span class="obs__fact-label">ASTRONOMY</span>
+                  <span class="obs__fact-value">EXPERIENCES</span>
+                </div>
+                <div class="obs__fact reveal" style="--rd:.5s">
+                  <span class="obs__fact-label">SCIENCE</span>
+                  <span class="obs__fact-value">EDUCATION</span>
+                </div>
+              </div>
+              <div class="sec-cta reveal" style="--rd:.58s">
+                <a class="btn btn--outline" href="#observe">
+                  <span class="btn__label">Discover the Observatory</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 03 · WHY THE HIMALAYAS
+           ============================================================ -->
+      <section class="section section--alt why" id="why">
+        <div class="section__inner">
+          <div class="why__head">
+            <p class="sec-eyebrow reveal">THE SETTING</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Why Look to the Sky <span>From Here?</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">At this altitude, above most of the atmosphere's turbulence and all of the valley's light, the Himalayan sky behaves differently. Stars hold steady. The Milky Way shows its full band.</p>
+          </div>
+
+          <div class="why-pano reveal" style="--rd:.15s" role="img" aria-label="A cinematic Himalayan panorama under a dark starry sky">
+            <div class="why-pano__stars" aria-hidden="true"></div>
+            <div class="why-pano__alpenglow" aria-hidden="true"></div>
+            <div class="why-pano__mountains" aria-hidden="true">
+              <svg viewBox="0 0 1600 400" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="whyBack" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#1a2c4c" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#1a2c4c" stop-opacity="0.5"/>
+                    <stop offset="1" stop-color="#1a2c4c" stop-opacity="0.88"/>
+                  </linearGradient>
+                  <linearGradient id="whyMid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#0c1a33" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#0c1a33" stop-opacity="0.7"/>
+                    <stop offset="1" stop-color="#0c1a33" stop-opacity="0.94"/>
+                  </linearGradient>
+                  <linearGradient id="whyFront" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#050b16" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#050b16" stop-opacity="0.85"/>
+                    <stop offset="1" stop-color="#050b16" stop-opacity="0.98"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 400 L0 258 L130 208 L250 246 L410 186 L540 238 L680 168 L820 220 L960 186 L1100 238 L1240 172 L1380 224 L1500 200 L1600 240 L1600 400 Z" fill="url(#whyBack)"/>
+                <path d="M0 400 L0 320 L180 268 L340 308 L500 250 L660 298 L820 242 L980 296 L1140 252 L1300 304 L1460 264 L1600 300 L1600 400 Z" fill="url(#whyMid)"/>
+                <path d="M0 400 L0 372 L150 338 L300 364 L460 330 L620 366 L800 330 L862 300 L940 336 L1100 352 L1260 318 L1420 352 L1540 330 L1600 346 L1600 400 Z" fill="url(#whyFront)"/>
+              </svg>
+            </div>
+
+            <div class="why-marks" aria-hidden="true">
+              <div class="why-mark why-mark--altitude" tabindex="0">
+                <div class="why-mark__node">
+                  <span class="why-mark__dot"></span>
+                  <span class="why-mark__label">HIGH ALTITUDE</span>
+                </div>
+                <div class="why-mark__tip">Thinner air means steadier seeing — a clearer atmosphere between you and the stars.</div>
+              </div>
+              <div class="why-mark why-mark--dark" tabindex="0">
+                <div class="why-mark__node">
+                  <span class="why-mark__dot"></span>
+                  <span class="why-mark__label">DARK SKY</span>
+                </div>
+                <div class="why-mark__tip">A Bortle-class-2 sky — among the darkest skies reachable without an expedition.</div>
+              </div>
+              <div class="why-mark why-mark--pollution" tabindex="0">
+                <div class="why-mark__node">
+                  <span class="why-mark__dot"></span>
+                  <span class="why-mark__label">LOW LIGHT POLLUTION</span>
+                </div>
+                <div class="why-mark__tip">The nearest settlements sit in deep valleys, their light screened by the ridgelines.</div>
+              </div>
+              <div class="why-mark why-mark--horizons" tabindex="0">
+                <div class="why-mark__node">
+                  <span class="why-mark__dot"></span>
+                  <span class="why-mark__label">CLEAR HORIZONS</span>
+                </div>
+                <div class="why-mark__tip">Open alpine plateaus give an unobstructed view from horizon to horizon.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 04 · SIGNATURE EXPERIENCES
+           ============================================================ -->
+      <section class="section exp" id="experiences">
+        <div class="section__inner">
+          <div class="exp__head">
+            <p class="sec-eyebrow reveal">SIGNATURE EXPERIENCES</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Experience the Night <span>Differently</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">Each night is shaped around the sky above it — a small group, a clear horizon and an astronomer who knows where to look.</p>
+          </div>
+
+          <div class="exp-grid">
+            <article class="exp-card exp-card--feature reveal">
+              <div class="exp-card__art exp-card__art--stargaze" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">SIGNATURE NIGHT</p>
+                <h3 class="exp-card__title">Stargazing Under the Himalayan Sky</h3>
+                <p class="exp-card__desc">A guided night beneath a Bortle-2 sky. Astronomers steer you across constellations, planets and the Milky Way — by naked eye, binoculars and telescope.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="exp-card reveal" style="--rd:.08s">
+              <div class="exp-card__art exp-card__art--astro" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">PHOTOGRAPHY</p>
+                <h3 class="exp-card__title">Astrophotography</h3>
+                <p class="exp-card__desc">Hands-on imaging sessions — capture the Moon, nebulae and star trails with expert guidance at the eyepiece and the camera.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="exp-card reveal" style="--rd:.16s">
+              <div class="exp-card__art exp-card__art--telescope" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">OPTICS</p>
+                <h3 class="exp-card__title">Telescope Observation</h3>
+                <p class="exp-card__desc">Look through the observatory's instruments at planets, double stars and deep-sky objects magnified against the dark.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="exp-card reveal" style="--rd:.08s">
+              <div class="exp-card__art exp-card__art--guided" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">GUIDED</p>
+                <h3 class="exp-card__title">Night Sky Exploration</h3>
+                <p class="exp-card__desc">A narrated journey across the sky — from the brightest stars of the evening to the farthest galaxies in the field.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="exp-card reveal" style="--rd:.16s">
+              <div class="exp-card__art exp-card__art--workshop" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">WORKSHOP</p>
+                <h3 class="exp-card__title">Astronomy Workshops</h3>
+                <p class="exp-card__desc">Structured sessions on how the sky works — phases, seasons, scale, light and time — taught beside a real telescope.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="exp-card reveal" style="--rd:.24s">
+              <div class="exp-card__art exp-card__art--school" aria-hidden="true"></div>
+              <div class="exp-card__body">
+                <p class="exp-card__eyebrow">EDUCATION</p>
+                <h3 class="exp-card__title">School Experiences</h3>
+                <p class="exp-card__desc">Curricula-aligned programs that turn a night on the mountain into a lasting lesson in science and curiosity.</p>
+                <a class="exp-card__link" href="#book">Explore
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="sec-cta reveal" style="--rd:.2s; justify-content:center;">
+            <a class="btn btn--primary" href="#book">
+              <svg class="btn__spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="btn__label">Explore All Experiences</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 05 · EXPLORE THE NIGHT SKY
+           ============================================================ -->
+      <section class="section skyjourney" id="night-sky">
+        <div class="section__inner">
+          <div class="skyjourney__head">
+            <div>
+              <p class="sec-eyebrow reveal">THE SKY ABOVE</p>
+              <h2 class="sec-title reveal" style="--rd:.1s">Explore Beyond <span>the Horizon</span></h2>
+              <p class="sec-lede reveal" style="--rd:.2s">From the Moon to the edge of deep space — a preview of what the observatory's sky has in store. Drag, or use the arrows.</p>
+            </div>
+            <div class="skyjourney__track-nav reveal" style="--rd:.2s">
+              <button class="skyjourney__btn skyjourney__btn--prev" type="button" aria-label="Previous destination">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button class="skyjourney__btn skyjourney__btn--next" type="button" aria-label="Next destination">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="skyjourney__viewport">
+            <div class="skyjourney__rail" aria-label="Astronomical destinations" role="group">
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--moon" aria-hidden="true"></div>
+                <span class="sky-dest__index">01 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">THE MOON</h3>
+                  <p class="sky-dest__info">Our nearest companion — craters, maria and mountains thrown into relief by the grazing light of a low sun.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--planets" aria-hidden="true"></div>
+                <span class="sky-dest__index">02 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">PLANETS</h3>
+                  <p class="sky-dest__info">Saturn's rings, Jupiter's moons, the phases of Venus — each revealed by the observatory's instruments.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--constellations" aria-hidden="true"></div>
+                <span class="sky-dest__index">03 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">CONSTELLATIONS</h3>
+                  <p class="sky-dest__info">Ancient patterns mapped across the Himalayan night — the sky's oldest stories, retold under a dark sky.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--nebulae" aria-hidden="true"></div>
+                <span class="sky-dest__index">04 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">NEBULAE</h3>
+                  <p class="sky-dest__info">Clouds of gas and dust where stars are born, glowing faintly through the telescope's eyepiece.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--galaxies" aria-hidden="true"></div>
+                <span class="sky-dest__index">05 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">GALAXIES</h3>
+                  <p class="sky-dest__info">Islands of a hundred billion stars — the Andromeda Galaxy among the nearest in our field of view.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+              <article class="sky-dest" tabindex="0">
+                <div class="sky-dest__art sky-dest__art--deepspace" aria-hidden="true"></div>
+                <span class="sky-dest__index">06 / 06</span>
+                <div class="sky-dest__body">
+                  <h3 class="sky-dest__title">DEEP SPACE</h3>
+                  <p class="sky-dest__info">Clusters, supernova remnants and the slow drift of deep-sky objects beyond our galaxy.</p>
+                  <div class="sky-dest__divider" aria-hidden="true"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="skyjourney__progress" aria-hidden="true">
+            <span class="skyjourney__progress-fill"></span>
+          </div>
+
+          <div class="skyjourney__cta reveal" style="--rd:.2s">
+            <a class="btn btn--primary" href="#observe">
+              <span class="btn__label">Explore the Universe</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 06 · OBSERVATORY & TELESCOPES
+           ============================================================ -->
+      <section class="section section--alt observe" id="observe">
+        <div class="section__inner">
+          <div class="observe__head">
+            <p class="sec-eyebrow reveal">OUR INSTRUMENTS</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Built to Bring <span>the Universe Closer</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">The observatory is a working scientific facility. Its dome, instruments and observing deck are designed for one thing — gathering light, and sharing what it reveals.</p>
+          </div>
+
+          <div class="observe__layout">
+            <div class="observe__visual reveal" role="img" aria-label="The observatory dome on its Himalayan ridge">
+              <span class="observe__visual-label">DOME · NORTH RIDGE</span>
+              <svg viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="obsvBack" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#1a2c4c" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#1a2c4c" stop-opacity="0.5"/>
+                    <stop offset="1" stop-color="#1a2c4c" stop-opacity="0.88"/>
+                  </linearGradient>
+                  <linearGradient id="obsvMid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#0c1a33" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#0c1a33" stop-opacity="0.7"/>
+                    <stop offset="1" stop-color="#0c1a33" stop-opacity="0.94"/>
+                  </linearGradient>
+                  <linearGradient id="obsvFront" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#050b16" stop-opacity="0"/>
+                    <stop offset="0.5" stop-color="#050b16" stop-opacity="0.85"/>
+                    <stop offset="1" stop-color="#050b16" stop-opacity="0.98"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0 400 L0 258 L130 208 L250 246 L410 186 L540 238 L680 168 L820 220 L960 186 L1100 238 L1240 172 L1380 224 L1500 200 L1600 240 L1600 400 Z" fill="url(#obsvBack)"/>
+                <path d="M0 400 L0 320 L180 268 L340 308 L500 250 L660 298 L820 242 L980 296 L1140 252 L1300 304 L1460 264 L1600 300 L1600 400 Z" fill="url(#obsvMid)"/>
+                <g class="obs-visual__dome">
+                  <path d="M0 400 L0 372 L150 338 L300 364 L460 330 L620 366 L800 330 L862 300 L940 336 L1100 352 L1260 318 L1420 352 L1540 330 L1600 346 L1600 400 Z" fill="url(#obsvFront)"/>
+                  <rect x="840" y="296" width="44" height="12" rx="2" fill="#07101f"/>
+                  <path d="M842 296 A20 20 0 0 1 882 296 Z" fill="#0a1428"/>
+                  <path class="obs-visual__dome-slit" d="M858 276 L862 276 L862 296 L858 296 Z" fill="#00d4ff" opacity="0.9"/>
+                </g>
+              </svg>
+              <span class="observe__visual-caption">IMAGE / CAPTION PLACEHOLDER — REPLACE WITH A PHOTOGRAPH OF THE DOME</span>
+            </div>
+
+            <div class="observe__steps">
+              <div class="observe__step reveal">
+                <span class="observe__step-label">01 — THE DOME</span>
+                <h3 class="observe__step-title">A Rotating Eye on the Ridge</h3>
+                <p class="observe__step-desc">The observatory's dome crowns the ridge, its slit opening to target objects anywhere across the sky while protecting the optics from weather and stray light.</p>
+              </div>
+              <div class="observe__step reveal" style="--rd:.08s">
+                <span class="observe__step-label">02 — THE TELESCOPE</span>
+                <h3 class="observe__step-title">The Primary Instrument</h3>
+                <p class="observe__step-desc">The observatory's main optical system. Final specifications are being confirmed — they will be published here.</p>
+                <div class="observe__specs">
+                  <div class="observe__spec"><span class="observe__spec-name">APERTURE</span><span class="observe__spec-value" data-tbd>TBD</span></div>
+                  <div class="observe__spec"><span class="observe__spec-name">FOCAL RATIO</span><span class="observe__spec-value" data-tbd>TBD</span></div>
+                  <div class="observe__spec"><span class="observe__spec-name">MOUNT</span><span class="observe__spec-value" data-tbd>TBD</span></div>
+                  <div class="observe__spec"><span class="observe__spec-name">IMAGING</span><span class="observe__spec-value" data-tbd>TBD</span></div>
+                </div>
+              </div>
+              <div class="observe__step reveal" style="--rd:.16s">
+                <span class="observe__step-label">03 — THE OBSERVING DECK</span>
+                <h3 class="observe__step-title">Observe Beside the Astronomers</h3>
+                <p class="observe__step-desc">An open deck where visitors observe alongside the team, under a sky free of valley haze and distant lights.</p>
+              </div>
+              <div class="observe__step reveal" style="--rd:.24s">
+                <span class="observe__step-label">04 — THE FACILITIES</span>
+                <h3 class="observe__step-title">Built for Cold Mountain Nights</h3>
+                <p class="observe__step-desc">Thermal management, power and support systems keep instruments and guests safe and stable through the night.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 07 · LIVE SKY
+           ============================================================ -->
+      <section class="section sky-live" id="sky">
+        <div class="section__inner">
+          <div class="sky-live__head" style="text-align:center;">
+            <p class="sec-eyebrow reveal">LIVE FROM THE OBSERVATORY</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">What's Above <span>the Himalayas Tonight?</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s; margin-inline:auto;">A snapshot of conditions at the observatory. Values shown are placeholders until the observatory's weather and astronomy feed is connected.</p>
+          </div>
+
+          <div class="sky-live__panel reveal" style="--rd:.15s">
+            <div class="sky-live__head">
+              <span class="sky-live__status">
+                <span class="sky-live__dot" aria-hidden="true"></span>
+                TELEMETRY · FEED PENDING
+              </span>
+              <span class="sky-live__badge">PLACEHOLDER DATA</span>
+            </div>
+
+            <div class="sky-live__grid">
+              <div class="sky-live__cell">
+                <span class="sky-live__label">MOON PHASE</span>
+                <span class="sky-live__value">92%</span>
+                <p class="sky-live__note">WAXING GIBBOUS</p>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">SKY VISIBILITY</span>
+                <span class="sky-live__value">CLEAR</span>
+                <p class="sky-live__note">BORTLE 2</p>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">TEMPERATURE</span>
+                <span class="sky-live__value">−8°C</span>
+                <p class="sky-live__note">OBSERVING DECK</p>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">SUNRISE</span>
+                <span class="sky-live__value">05:41</span>
+                <p class="sky-live__note">IST · APPROX</p>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">SUNSET</span>
+                <span class="sky-live__value">18:22</span>
+                <p class="sky-live__note">IST · APPROX</p>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">PLANET VISIBILITY</span>
+                <span class="sky-live__value">SATURN · JUPITER</span>
+                <p class="sky-live__note">+ VENUS AT DUSK</p>
+                <span class="sky-live__meter" aria-hidden="true"><span class="sky-live__meter-fill" data-fill="76"></span></span>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">ASTRONOMY INDEX</span>
+                <span class="sky-live__value">98 / 100</span>
+                <p class="sky-live__note">EXCELLENT</p>
+                <span class="sky-live__meter" aria-hidden="true"><span class="sky-live__meter-fill" data-fill="98"></span></span>
+              </div>
+              <div class="sky-live__cell">
+                <span class="sky-live__label">NEXT EVENT</span>
+                <span class="sky-live__value">6 DAYS</span>
+                <p class="sky-live__note">METEOR WATCH</p>
+              </div>
+            </div>
+
+            <div class="sky-live__foot">
+              <span class="sky-live__note-line">DATA ARCHITECTURE READY — CONNECT YOUR ASTRONOMY API IN js/home.js</span>
+              <a class="btn btn--primary" href="#events">
+                <span class="btn__label">View Live Sky</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 08 · UPCOMING EVENTS
+           ============================================================ -->
+      <section class="section events" id="events">
+        <div class="section__inner">
+          <div class="events__head">
+            <p class="sec-eyebrow reveal">UPCOMING EVENTS</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">The Sky Has <span>Its Own Calendar</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">Stargazing nights, workshops, camps and celestial happenings — the observatory's evenings are planned around what the sky offers.</p>
+          </div>
+
+          <div class="events__layout">
+            <div class="calendar reveal">
+              <div class="calendar__head">
+                <span class="calendar__title" id="calendarTitle">THIS MONTH</span>
+                <span class="calendar__badge">EVENT DAYS</span>
+              </div>
+              <div class="calendar__grid" id="calendarGrid">
+                <span class="calendar__dow">SUN</span>
+                <span class="calendar__dow">MON</span>
+                <span class="calendar__dow">TUE</span>
+                <span class="calendar__dow">WED</span>
+                <span class="calendar__dow">THU</span>
+                <span class="calendar__dow">FRI</span>
+                <span class="calendar__dow">SAT</span>
+              </div>
+            </div>
+
+            <div class="events-list">
+              <article class="event reveal" data-date="2026-08-15">
+                <div class="event__date">
+                  <span class="event__day">15</span>
+                  <span class="event__month">AUG</span>
+                </div>
+                <div class="event__body">
+                  <h3 class="event__title">Astronomy Night Under the Milky Way</h3>
+                  <div class="event__meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>Main Observing Deck</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>8:00 PM IST</span>
+                  </div>
+                  <p class="event__desc">A guided evening of naked-eye astronomy and telescope viewing beneath the summer Milky Way.</p>
+                </div>
+                <a class="btn btn--outline event__cta" href="#book">Reserve</a>
+              </article>
+
+              <article class="event reveal" data-date="2026-08-21">
+                <div class="event__date">
+                  <span class="event__day">21</span>
+                  <span class="event__month">AUG</span>
+                </div>
+                <div class="event__body">
+                  <h3 class="event__title">Deep Space Imaging Workshop</h3>
+                  <div class="event__meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>Astro Lab</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>9:00 PM IST</span>
+                  </div>
+                  <p class="event__desc">Learn to capture nebulae and galaxies with the observatory's astrophotography setup.</p>
+                </div>
+                <a class="btn btn--outline event__cta" href="#book">Reserve</a>
+              </article>
+
+              <article class="event reveal" data-date="2026-08-28">
+                <div class="event__date">
+                  <span class="event__day">28</span>
+                  <span class="event__month">AUG</span>
+                </div>
+                <div class="event__body">
+                  <h3 class="event__title">Moon &amp; Planets Evening</h3>
+                  <div class="event__meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>Observatory Dome</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>7:30 PM IST</span>
+                  </div>
+                  <p class="event__desc">A lunar survey and planet lineup through the observatory's primary telescope.</p>
+                </div>
+                <a class="btn btn--outline event__cta" href="#book">Reserve</a>
+              </article>
+
+              <article class="event reveal" data-date="2026-09-05">
+                <div class="event__date">
+                  <span class="event__day">05</span>
+                  <span class="event__month">SEP</span>
+                </div>
+                <div class="event__body">
+                  <h3 class="event__title">Student Expedition Weekend</h3>
+                  <div class="event__meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>Academy Campus</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>2-DAY PROGRAM</span>
+                  </div>
+                  <p class="event__desc">An immersive program for school groups — sky labs, telescope training and field observation.</p>
+                </div>
+                <a class="btn btn--outline event__cta" href="#book">Reserve</a>
+              </article>
+
+              <article class="event reveal" data-date="2026-09-18">
+                <div class="event__date">
+                  <span class="event__day">18</span>
+                  <span class="event__month">SEP</span>
+                </div>
+                <div class="event__body">
+                  <h3 class="event__title">Meteor Shower Watch</h3>
+                  <div class="event__meta">
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>North Ridge Viewpoint</span>
+                    <span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>11:00 PM IST</span>
+                  </div>
+                  <p class="event__desc">Blankets, warm drinks and a forecast clear sky as the meteors arrive over the ridge.</p>
+                </div>
+                <a class="btn btn--outline event__cta" href="#book">Reserve</a>
+              </article>
+            </div>
+          </div>
+
+          <div class="sec-cta reveal" style="--rd:.2s; justify-content:center;">
+            <a class="btn btn--primary" href="#book">
+              <span class="btn__label">View All Events</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 09 · ASTRONOMY ACADEMY
+           ============================================================ -->
+      <section class="section section--alt academy" id="academy">
+        <div class="section__inner">
+          <div class="academy__grid">
+            <div class="academy-visual reveal" role="img" aria-label="A schematic of planetary orbits — learning the sky">
+              <span class="academy-visual__label">ACADEMY</span>
+              <div class="academy-visual__orbital" aria-hidden="true">
+                <span class="academy-visual__ring"></span>
+                <span class="academy-visual__node"></span>
+                <span class="academy-visual__core">LEARN<br/>THE<br/>SKY</span>
+              </div>
+            </div>
+
+            <div class="academy__content">
+              <p class="sec-eyebrow reveal">ASTRONOMY ACADEMY</p>
+              <h2 class="sec-title reveal" style="--rd:.1s">Learn to Read <span>the Universe</span></h2>
+              <p class="sec-lede reveal" style="--rd:.18s">From a school's first look through a telescope to structured courses in the night sky, the Academy turns curiosity into understanding.</p>
+
+              <div class="academy__list">
+                <div class="academy__item reveal" style="--rd:.24s">
+                  <span class="academy__item-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <div>
+                    <p class="academy__item-label">Astronomy Workshops</p>
+                    <p class="academy__item-desc">Practical, hands-on sessions built for beginners.</p>
+                  </div>
+                </div>
+                <div class="academy__item reveal" style="--rd:.32s">
+                  <span class="academy__item-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <div>
+                    <p class="academy__item-label">School Programs</p>
+                    <p class="academy__item-desc">Curricula-aligned experiences for classrooms and groups.</p>
+                  </div>
+                </div>
+                <div class="academy__item reveal" style="--rd:.4s">
+                  <span class="academy__item-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <div>
+                    <p class="academy__item-label">Guided Courses</p>
+                    <p class="academy__item-desc">Structured journeys from the basics to deep-sky observing.</p>
+                  </div>
+                </div>
+                <div class="academy__item reveal" style="--rd:.48s">
+                  <span class="academy__item-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  </span>
+                  <div>
+                    <p class="academy__item-label">Practical Observation</p>
+                    <p class="academy__item-desc">Real observing time with the observatory's instruments.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sec-cta reveal" style="--rd:.56s">
+                <a class="btn btn--outline" href="#book">
+                  <span class="btn__label">Explore Astronomy Academy</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 10 · ASTRONOMY GAME
+           ============================================================ -->
+      <section class="section game" id="games">
+        <div class="section__inner">
+          <div class="game__head">
+            <p class="sec-eyebrow reveal">ASTRONOMY GAME</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Fly the <span>Night Sky</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">A flagship mission from the Himalayan Observatory — plot a course across the stars and reach a galaxy two and a half million light-years away.</p>
+          </div>
+
+          <div class="game-console reveal" style="--rd:.15s">
+            <div class="game-console__space">
+              <div class="game-console__neb game-console__neb--1" aria-hidden="true"></div>
+              <div class="game-console__neb game-console__neb--2" aria-hidden="true"></div>
+              <div class="game-console__planet" aria-hidden="true"></div>
+              <div class="game-console__shuttle" aria-hidden="true">
+                <svg viewBox="0 0 120 120" fill="none">
+                  <defs>
+                    <linearGradient id="shipBody" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#eaf4ff"/>
+                      <stop offset="0.5" stop-color="#8fb2d8"/>
+                      <stop offset="1" stop-color="#3a5b80"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M60 8 L82 60 L60 110 L38 60 Z" fill="url(#shipBody)" stroke="#9ad7ff" stroke-opacity="0.6"/>
+                  <path d="M60 8 L52 34 L68 34 Z" fill="#9ad7ff" opacity="0.8"/>
+                  <path d="M46 56 L60 60 L74 56 L60 92 Z" fill="#123c8a"/>
+                  <ellipse cx="60" cy="36" rx="6" ry="8" fill="#00d4ff" opacity="0.9"/>
+                  <path d="M40 108 L80 108 M48 116 L72 116" stroke="#9ad7ff" stroke-width="3" stroke-linecap="round"/>
+                  <path d="M40 66 L16 52 L16 60 Z" fill="#ffd166" opacity="0.85"/>
+                  <path d="M80 66 L104 52 L104 60 Z" fill="#ffd166" opacity="0.85"/>
+                </svg>
+              </div>
+              <span class="game-console__coords">HIMALAYAN OBSERVATORY · MISSION CONTROL</span>
+            </div>
+
+            <div class="game-console__brief">
+              <span class="game-console__status">
+                <span class="game-console__status-dot" aria-hidden="true"></span>
+                MISSION BRIEFING
+              </span>
+              <h3 class="game-console__title">MISSION: COSMIC EXPLORER</h3>
+              <p class="game-console__briefing">Plot a course to Andromeda. Every correct choice carries the mission forward — navigate the stars, chart the galaxy, and reach the distant island of light.</p>
+              <div class="game-console__target">
+                <span class="game-console__target-label">TARGET</span>
+                <span class="game-console__target-value">ANDROMEDA GALAXY</span>
+              </div>
+              <div>
+                <div class="game-console__progress" aria-hidden="true">
+                  <span class="game-console__progress-fill"></span>
+                </div>
+                <p class="game-console__progress-note">PILOT PREPARATION · 64%</p>
+              </div>
+              <div class="game-console__cta">
+                <a class="btn btn--primary" href="#book">
+                  <svg class="btn__spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  <span class="btn__label">Enter the Mission</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 11 · ASTROPHOTOGRAPHY
+           ============================================================ -->
+      <section class="section gallery" id="gallery">
+        <div class="section__inner">
+          <div class="gallery__head">
+            <p class="sec-eyebrow reveal">ASTROPHOTOGRAPHY</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">The Universe <span>Through Our Lens</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">A first look at what the observatory's sky can produce. These frames are placeholders — the observatory's own captures will live here.</p>
+          </div>
+
+          <div class="gallery-grid">
+            <article class="gal-item gal-item--feat reveal" tabindex="0" role="button"
+                     data-art="milkyway"
+                     data-title="Milky Way Over the Ridge"
+                     data-cat="ASTRO-LANDSCAPE"
+                     data-desc="The galactic core rising over a Himalayan ridgeline on a clear summer night."
+                     aria-label="Milky Way Over the Ridge — view preview">
+              <div class="gal-item__art gal-item__art--milkyway" aria-hidden="true"></div>
+              <div class="gal-item__body">
+                <div>
+                  <h3 class="gal-item__title">Milky Way Over the Ridge</h3>
+                  <p class="gal-item__cat">ASTRO-LANDSCAPE</p>
+                </div>
+                <span class="gal-item__zoom" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                </span>
+              </div>
+            </article>
+
+            <article class="gal-item reveal" style="--rd:.1s" tabindex="0" role="button"
+                     data-art="moon"
+                     data-title="Lunar Terminator"
+                     data-cat="LUNAR"
+                     data-desc="Craters cast long shadows along the Moon's terminator line, where day meets night."
+                     aria-label="Lunar Terminator — view preview">
+              <div class="gal-item__art gal-item__art--moon" aria-hidden="true"></div>
+              <div class="gal-item__body">
+                <div>
+                  <h3 class="gal-item__title">Lunar Terminator</h3>
+                  <p class="gal-item__cat">LUNAR</p>
+                </div>
+                <span class="gal-item__zoom" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                </span>
+              </div>
+            </article>
+
+            <article class="gal-item reveal" style="--rd:.16s" tabindex="0" role="button"
+                     data-art="nebula"
+                     data-title="Orion Nebula"
+                     data-cat="DEEP SKY"
+                     data-desc="A stellar nursery glowing in the sword of Orion, captured through long exposure."
+                     aria-label="Orion Nebula — view preview">
+              <div class="gal-item__art gal-item__art--nebula" aria-hidden="true"></div>
+              <div class="gal-item__body">
+                <div>
+                  <h3 class="gal-item__title">Orion Nebula</h3>
+                  <p class="gal-item__cat">DEEP SKY</p>
+                </div>
+                <span class="gal-item__zoom" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                </span>
+              </div>
+            </article>
+
+            <article class="gal-item reveal" style="--rd:.22s" tabindex="0" role="button"
+                     data-art="planet"
+                     data-title="Saturn in Opposition"
+                     data-cat="PLANET"
+                     data-desc="The ringed world through the observatory's primary optics, at its closest approach to Earth."
+                     aria-label="Saturn in Opposition — view preview">
+              <div class="gal-item__art gal-item__art--planet" aria-hidden="true"></div>
+              <div class="gal-item__body">
+                <div>
+                  <h3 class="gal-item__title">Saturn in Opposition</h3>
+                  <p class="gal-item__cat">PLANET</p>
+                </div>
+                <span class="gal-item__zoom" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                </span>
+              </div>
+            </article>
+
+            <article class="gal-item reveal" style="--rd:.28s" tabindex="0" role="button"
+                     data-art="startrails"
+                     data-title="Star Trails at 3,650 m"
+                     data-cat="ASTRO-LANDSCAPE"
+                     data-desc="A full night of Earth's rotation, traced across the alpine sky above the observatory."
+                     aria-label="Star Trails at 3,650 metres — view preview">
+              <div class="gal-item__art gal-item__art--startrails" aria-hidden="true"></div>
+              <div class="gal-item__body">
+                <div>
+                  <h3 class="gal-item__title">Star Trails at 3,650 m</h3>
+                  <p class="gal-item__cat">ASTRO-LANDSCAPE</p>
+                </div>
+                <span class="gal-item__zoom" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg>
+                </span>
+              </div>
+            </article>
+          </div>
+
+          <div class="sec-cta reveal" style="--rd:.2s; justify-content:center;">
+            <a class="btn btn--primary" href="#book">
+              <span class="btn__label">Explore Gallery</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 12 · STORIES / JOURNAL
+           ============================================================ -->
+      <section class="section section--alt journal" id="blog">
+        <div class="section__inner">
+          <div class="journal__head">
+            <p class="sec-eyebrow reveal">STORIES FROM THE UNIVERSE</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Notes From <span>the Observatory</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">Field notes, guides and dispatches from the mountain — written between observing runs.</p>
+          </div>
+
+          <div class="journal-grid">
+            <article class="post reveal">
+              <div class="post__art">
+                <div class="gal-item__art gal-item__art--milkyway" aria-hidden="true"></div>
+                <span class="post__cat">GUIDE</span>
+              </div>
+              <div class="post__body">
+                <span class="post__date">AUGUST 2026</span>
+                <h3 class="post__title">How to Read a Star Chart Under a Dark Sky</h3>
+                <p class="post__excerpt">Start with the brightest guide stars and let the constellations lead you outward, one hop at a time.</p>
+                <a class="post__link" href="#book">Read Article
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="post reveal" style="--rd:.1s">
+              <div class="post__art">
+                <div class="gal-item__art gal-item__art--startrails" aria-hidden="true"></div>
+                <span class="post__cat">OBSERVATORY</span>
+              </div>
+              <div class="post__body">
+                <span class="post__date">JULY 2026</span>
+                <h3 class="post__title">What a Bortle-2 Sky Actually Looks Like</h3>
+                <p class="post__excerpt">Dark enough to read a star chart by starlight — field notes from a night on the ridge.</p>
+                <a class="post__link" href="#book">Read Article
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <article class="post reveal" style="--rd:.2s">
+              <div class="post__art">
+                <div class="gal-item__art gal-item__art--nebula" aria-hidden="true"></div>
+                <span class="post__cat">EVENTS</span>
+              </div>
+              <div class="post__body">
+                <span class="post__date">JUNE 2026</span>
+                <h3 class="post__title">Preparing for the Next Meteor Shower</h3>
+                <p class="post__excerpt">Where to look, when to arrive, and why the ridge beats any rooftop in the valley.</p>
+                <a class="post__link" href="#book">Read Article
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <div class="sec-cta reveal" style="--rd:.2s; justify-content:center;">
+            <a class="btn btn--primary" href="#book">
+              <span class="btn__label">Explore Journal</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 13 · TESTIMONIALS
+           ============================================================ -->
+      <section class="section testimonials" id="testimonials">
+        <div class="section__inner">
+          <div class="testimonials__head">
+            <p class="sec-eyebrow reveal">TESTIMONIALS</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Experiences That <span>Stay With You</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">Voices from the mountain — visitors, families, schools and enthusiasts, once they've shared their words.</p>
+          </div>
+
+          <div class="testimonials__stage">
+            <div class="tst-empty reveal">
+              <svg class="tst-empty__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12c-1.5 0-2.5-1-2.5-2.5S6.5 7 8 7c2 0 2.5 3 1 5.5-1 1.7-2.5 2.6-4 3.5l-1-1.7c1.6-.8 3-1.6 4-2.3M16 12c-1.5 0-2.5-1-2.5-2.5S14.5 7 16 7c2 0 2.5 3 1 5.5-1 1.7-2.5 2.6-4 3.5l-1-1.7c1.6-.8 3-1.6 4-2.3"/></svg>
+              <p class="tst-empty__title">YOUR WORDS, WHEN THEY'RE SHARED</p>
+              <p class="tst-empty__note">Real testimonials from visitors, families, schools and enthusiasts will appear here. They're kept as editable placeholders in the code — no invented voices.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 14 · PARTNERS / TRUST
+           ============================================================ -->
+      <section class="section partners" id="partners">
+        <div class="section__inner">
+          <div class="partners__head">
+            <p class="sec-eyebrow reveal">IN COLLABORATION WITH</p>
+            <h2 class="sec-title reveal" style="--rd:.1s">Partners &amp; <span>Institutions</span></h2>
+            <p class="sec-lede reveal" style="--rd:.2s">Schools, institutions, organisations and sponsors who work with the observatory.</p>
+          </div>
+
+          <div class="partners__stage">
+            <div class="partner partner__empty reveal">
+              PARTNERS · INSTITUTIONS · SCHOOLS · SPONSORS<br/>
+              Your collaborators will appear here — only real partnerships are shown.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 15 · FINAL CINEMATIC CTA
+           ============================================================ -->
+      <section class="final-cta" id="book">
+        <div class="final-cta__scene" aria-hidden="true">
+          <div class="final-cta__milky"></div>
+          <div class="final-cta__mountains">
+            <svg viewBox="0 0 1600 400" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="finalBack" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#162a4a" stop-opacity="0"/>
+                  <stop offset="0.5" stop-color="#162a4a" stop-opacity="0.5"/>
+                  <stop offset="1" stop-color="#162a4a" stop-opacity="0.88"/>
+                </linearGradient>
+                <linearGradient id="finalMid" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0c1a33" stop-opacity="0"/>
+                  <stop offset="0.5" stop-color="#0c1a33" stop-opacity="0.7"/>
+                  <stop offset="1" stop-color="#0c1a33" stop-opacity="0.94"/>
+                </linearGradient>
+                <linearGradient id="finalFront" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#050b16" stop-opacity="0"/>
+                  <stop offset="0.5" stop-color="#050b16" stop-opacity="0.85"/>
+                  <stop offset="1" stop-color="#050b16" stop-opacity="0.98"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 400 L0 258 L130 208 L250 246 L410 186 L540 238 L680 168 L820 220 L960 186 L1100 238 L1240 172 L1380 224 L1500 200 L1600 240 L1600 400 Z" fill="url(#finalBack)"/>
+              <path d="M0 400 L0 320 L180 268 L340 308 L500 250 L660 298 L820 242 L980 296 L1140 252 L1300 304 L1460 264 L1600 300 L1600 400 Z" fill="url(#finalMid)"/>
+              <path d="M0 400 L0 372 L150 338 L300 364 L460 330 L620 366 L800 330 L862 300 L940 336 L1100 352 L1260 318 L1420 352 L1540 330 L1600 346 L1600 400 Z" fill="url(#finalFront)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="final-cta__veil" aria-hidden="true"></div>
+
+        <div class="final-cta__inner">
+          <p class="final-cta__eyebrow reveal">YOUR NIGHT BEGINS HERE</p>
+          <h2 class="final-cta__title reveal" style="--rd:.1s">The Universe Is Waiting.</h2>
+          <p class="final-cta__sub reveal" style="--rd:.2s">Come discover it from the Himalayas.</p>
+          <div class="final-cta__cta reveal" style="--rd:.3s">
+            <a class="btn btn--primary" href="#contact">
+              <svg class="btn__spark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <span class="btn__label">Book Your Experience</span>
+            </a>
+            <a class="btn btn--outline" href="#events">
+              <span class="btn__label">Plan Your Visit</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 16 · FOOTER
+           ============================================================ -->
+      <footer class="footer" id="contact">
+        <div class="section__inner">
+          <div class="footer__grid">
+            <div class="footer__brand">
+              <a class="brand" href="#home" aria-label="Himalayan Observatory — home">
+                <span class="brand__logo" aria-hidden="true">
+                  <img src="assets/logo_himalayan.jpeg" alt="" width="1352" height="1600" />
+                </span>
+                <span class="brand__text">
+                  <span class="brand__title">HIMALAYAN <em>OBSERVATORY</em></span>
+                  <span class="brand__tagline">Gateway to the Universe</span>
+                </span>
+              </a>
+              <p class="footer__brand-desc">An observatory and astro-experience destination in the Himalayas — where science, education and the night sky meet.</p>
+              <p class="footer__brand-coords">28.5°N · 83.9°E · 3,650 M</p>
+            </div>
+
+            <nav class="footer__nav" aria-label="Footer navigation">
+              <p class="footer__title">EXPLORE</p>
+              <a class="footer__link" href="#observatory">Observatory</a>
+              <a class="footer__link" href="#experiences">Experiences</a>
+              <a class="footer__link" href="#events">Events</a>
+              <a class="footer__link" href="#academy">Academy</a>
+              <a class="footer__link" href="#gallery">Gallery</a>
+              <a class="footer__link" href="#blog">Journal</a>
+              <a class="footer__link" href="#games">Games</a>
+              <a class="footer__link" href="#contact">Contact</a>
+            </nav>
+
+            <div>
+              <p class="footer__title">VISITOR INFO</p>
+              <div class="footer__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 1 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.4"/></svg>
+                <span><span class="footer__info-label">LOCATION</span>Himalayan Observatory — [Address placeholder]</span>
+              </div>
+              <div class="footer__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.27a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9Z"/></svg>
+                <span><span class="footer__info-label">PHONE</span>+91 — — — — — [Phone placeholder]</span>
+              </div>
+              <div class="footer__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+                <span><span class="footer__info-label">EMAIL</span>hello@[observatory].com — [Email placeholder]</span>
+              </div>
+              <div class="footer__info-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+                <span><span class="footer__info-label">OPENING</span>6:00 PM — 4:00 AM IST</span>
+              </div>
+            </div>
+
+            <div>
+              <p class="footer__title">STAY IN THE LOOP</p>
+              <form class="footer__newsletter" aria-label="Newsletter signup">
+                <input class="footer__newsletter-input" type="email" placeholder="Your email" aria-label="Email address" autocomplete="email" required />
+                <button class="footer__newsletter-btn" type="submit">JOIN</button>
+              </form>
+              <p class="footer__newsletter-note">Night-sky alerts, event invitations and moon reports. No noise.</p>
+
+              <div class="footer__social" aria-label="Follow the observatory">
+                <a class="footer__social-link" href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>
+                </a>
+                <a class="footer__social-link" href="#" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 12c0-2.6-.3-4.4-.7-5.3a2.7 2.7 0 0 0-1.7-1.7C18.6 4.6 12 4.6 12 4.6s-6.6 0-7.6.4a2.7 2.7 0 0 0-1.7 1.7C2.3 7.6 2 9.4 2 12s.3 4.4.7 5.3a2.7 2.7 0 0 0 1.7 1.7c1 .4 7.6.4 7.6.4s6.6 0 7.6-.4a2.7 2.7 0 0 0 1.7-1.7c.4-.9.7-2.7.7-5.3Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 9.5v5l4.5-2.5L10 9.5Z" fill="currentColor"/></svg>
+                </a>
+                <a class="footer__social-link" href="#" aria-label="X">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer__bottom">
+            <div class="footer__legal">
+              <a class="footer__legal-link" href="#">Privacy Policy</a>
+              <a class="footer__legal-link" href="#">Terms</a>
+              <a class="footer__legal-link" href="#">Refund Policy</a>
+            </div>
+            <p class="footer__copy">© 2026 Himalayan Observatory · Crafted beneath the stars</p>
+          </div>
+        </div>
       </footer>
     </main>
 
+  </div>
+
+  <!-- Fullscreen astrophotography preview -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true"
+       aria-label="Image preview" aria-hidden="true">
+    <div class="lightbox__bg" data-close aria-hidden="true"></div>
+    <div class="lightbox__frame">
+      <div class="lightbox__art" id="lightboxArt"></div>
+      <div class="lightbox__caption">
+        <div>
+          <h3 class="lightbox__title" id="lightboxTitle"></h3>
+          <p class="lightbox__desc" id="lightboxDesc"></p>
+        </div>
+        <button class="lightbox__close" type="button" aria-label="Close preview">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Side dock: social / contact -->
@@ -618,5 +1748,6 @@
 
   <script src="js/loader.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>
